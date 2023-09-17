@@ -1,8 +1,23 @@
+'use client'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Norican, Borel } from 'next/font/google'
+import Link from 'next/link'
+import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faShoppingCart, faBars } from '@fortawesome/free-solid-svg-icons'
+import { Fragment } from 'react'
+import React, { useState } from 'react';
+import { Menu, Transition } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
-const inter = Inter({ subsets: ['latin'] })
+const norican = Norican({ 
+        subsets: ['latin'],
+        weight:'400' })
+
+const borel = Borel({ 
+          subsets: ['latin'],
+          weight:'400' })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,9 +29,109 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuVisible(!isMenuVisible);
+  };
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body >
+        <nav className='h-[100px] ps-2 flex justify-around bg-fuchsia-700 border-b border-black nav1'>
+          <Link className='px-3 flex items-center ' href='/'>
+            <Image 
+              src="/images/image1.png"
+              alt="Nombre de la imagen"
+              width={80}
+              height={60}
+              objectFit="cover"
+            />
+            <span className={norican.className + ' pl-3 text-fuchsia-200'}>Pascuala</span>
+
+          </Link>
+          
+          <form className=" flex items-center search-form">
+            <input className='w-full rounded-l-lg p-1' type="text" placeholder=" Buscar" />
+            <button className='bg-fuchsia-200  p-1 rounded-r-lg hover:bg-fuchsia-300' type="submit">  Buscar</button>
+          </form>
+          <div className="flex items-center ">
+            <Link className='p-3 text-fuchsia-200 hover:text-fuchsia-950 hidden md:block' href="/login">
+                <FontAwesomeIcon icon={faUser}size='2x' />
+            </Link>
+            <Link className='p-3 text-fuchsia-200 hover:text-fuchsia-950' href="/cart">
+              
+                <FontAwesomeIcon icon={faShoppingCart}size='2x' />
+              
+            </Link>
+          </div>
+        </nav>
+        <nav className='h-[60px] ps-2 flex items-center justify-start md:justify-center bg-fuchsia-600 rounded-b-3xl shadow-fuchsia-700/50 nav2 '>
+          <div className='flex ps-4 md:hidden'>
+          <button
+              id='bars'
+              className='flex px-3 py-2 border rounded border-fuchsia-200 text-fuchsia-200 hover:text-fuchsia-300'
+              onClick={toggleMenu} // Llamar a la función cuando se hace clic
+              >
+              <FontAwesomeIcon icon={faBars} />
+              <title>Menu</title>
+            </button>
+            {isMenuVisible && (
+              <div
+                id='menu'
+                className='absolute left-0 mt-10 bg-fuchsia-600 border border-fuchsia-200 rounded-md shadow-md'
+              >
+                <Link
+                  className={`${borel.className} block px-3 py-2 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
+                  href='/'
+                >
+                  Home
+                </Link>
+                <Link
+                  className={`${borel.className} block px-3 py-2 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
+                  href='/about'
+                >
+                  Acerca de
+                </Link>
+                <Link
+                  className={`${borel.className} block px-3 py-2 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
+                  href='/products'
+                >
+                  Productos
+                </Link>
+              </div>
+            )}
+          </div>
+          <div className='hidden md:flex bg-fuchsia-600'>
+          <Link
+                  className={`${borel.className} px-3 py-2 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
+                  href='/'
+                >
+                  Home
+                </Link>
+                <Link
+                  className={`${borel.className} px-3 py-2 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
+                  href='/about'
+                >
+                  Acerca de
+                </Link>
+                <Link
+                  className={`${borel.className} px-3 py-2 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
+                  href='/products'
+                >
+                  Productos
+                </Link>
+          </div>
+          
+        </nav>
+        {children}
+        <footer>
+        <div className="bg-fuchsia-700 p-3">
+            <p>&copy Grupo C4</p>
+        </div>
+        </footer>
+        </body>
     </html>
   )
 }
