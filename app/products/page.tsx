@@ -1,54 +1,39 @@
-import Image from 'next/image'
+'use client'
 
-const products = [
-    {
-        id: 1,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 2,
-        name: 'Remera',
-        href: '#',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 3,
-        name: 'Pantalon',
-        href: '#',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 4,
-        name: 'Buzo',
-        href: '#',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    }
-    // More products...
-]
+import React, { useState } from 'react';
+import products from './productos';
+import Card from '../components/card';
+import { Borel } from 'next/font/google';
 
-export default function productos() {
+const borel = Borel({
+    subsets: ['latin'],
+    weight: '400'
+})
+
+type Product = {
+    id: number;
+    name: string;
+    color: string;
+    price: string;
+    imageSrc: string;
+    imageAlt: string;
+    href: string;
+};
+
+export default function Productos() {
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+    const handleProductClick = (product: Product) => {
+        setSelectedProduct(product);
+    };
+
     return (
-        <div className="bg-white">
+        <div className="bg-white mt-48 md:mt-28">
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900">Ofertas</h2>
+                <h2 className={`${borel.className} pt-3 text-3xl font-bold tracking-tight text-fuchsia-950`}>Productos</h2>
 
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {products.map((product) => (
-                        <div key={product.id} className="group relative">
+                        <div key={product.id} className="group relative" onClick={() => handleProductClick(product)}>
                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                                 <img
                                     src={product.imageSrc}
@@ -69,10 +54,15 @@ export default function productos() {
                                 <p className="text-sm font-medium text-gray-900">{product.price}</p>
                             </div>
                         </div>
-
                     ))}
                 </div>
             </div>
+            {selectedProduct && (
+                <Card
+                    product={selectedProduct}
+                    onClose={() => setSelectedProduct(null)}
+                />
+            )}
         </div>
-    )
+    );
 }

@@ -1,7 +1,5 @@
 'use clilent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faSquareWhatsapp, faSquareInstagram, faFacebook} from '@fortawesome/free-brands-svg-icons'
-import { faAt } from '@fortawesome/free-solid-svg-icons'
 import { Norican, Borel } from 'next/font/google'
 
 const callouts = [
@@ -38,11 +36,11 @@ const borel = Borel({
 
 export default function Home() {
   return (
-    <div>
+    <div className='mt-48 md:mt-28'>
       <div className="bg-gray-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
-            <h2 className="text-2xl font-bold text-gray-900">Colecciones Primavera-Verano</h2>
+            <h2 className={`${borel.className} pt-3 text-3xl font-bold text-fuchsia-950`}>Colecciones Primavera-Verano</h2>
 
             <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
               {callouts.map((callout) => (
@@ -67,46 +65,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <section className={borel.className + ' flex content-center'} >
-        <div className="grid grid-cols-3 bg-fuchsia-600 flex p-3 h-64 content-center">
-          <div className="flex flex-col p-5">
-            <ul>
-              <li className="list-group-item">
-                <a href="./index.html" className="text-fuchsia-200 text-xl">Inicio</a>
-              </li>
-              <li className="list-group-item">
-                <a href="#" className="text-fuchsia-200 text-xl">Preguntas frecuentes</a>
-              </li>
-              <li className="list-group-item">
-                <a href="#" className="text-fuchsia-200 text-xl">Contactanos</a>
-              </li>
-              <li className="list-group-item">
-                <a href="#" className="text-fuchsia-200 text-xl">Suscribite!!!</a>
-              </li>
-              <li className="list-group-item">
-                <a href="#" className="text-fuchsia-200 text-xl">Medios de pago</a>
-              </li>
-            </ul>
-          </div>
-          <div className="flex flex-col items-center w-max ">
-            <h2 className="text-fuchsia-200 text-3xl m-3 py-3">Seguinos en nuestras redes !!!</h2>
-            <div className="flex pb-3">
-              <a className="link-redes" href="https://www.facebook.com/pascuala.pequenascosturas" target="_blank">
-                <FontAwesomeIcon className='text-fuchsia-200 p-2' size='3x' icon={faFacebook} />
-              </a>
-              <a className="link-redes" href="https://www.instagram.com/pascuala2012/" target="_blank">
-                <FontAwesomeIcon className='text-fuchsia-200 p-2' size='3x' icon={faSquareInstagram} />
-              </a>
-              <a className="link-redes" href="mailto:" target="_blank">
-                <FontAwesomeIcon className='text-fuchsia-200 p-2' size='3x' icon={faAt} />
-              </a>
-              <a className="link-redes" href="https://api.whatsapp.com/send?phone=5492233023017" target="_blank">
-                <FontAwesomeIcon className='text-fuchsia-200 p-2' size='3x' icon={faSquareWhatsapp} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </div>
   )
 }
