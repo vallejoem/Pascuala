@@ -8,7 +8,7 @@ const products = [
         imageSrc: 'images/productos/IMG_20230519_152557153.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: '$35',
-        color: 'Black'
+        stock: '33'
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ const products = [
         imageSrc: 'images/productos/IMG_20230418_134839646.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: '$35',
-        color: 'Black'
+        stock: '55'
     },
     {
         id: 3,
@@ -26,7 +26,7 @@ const products = [
         imageSrc: 'images/productos/IMG-20230520-WA0011.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: '$35',
-        color: 'Black'
+        stock: '23'
     },
     {
         id: 4,
@@ -35,7 +35,7 @@ const products = [
         imageSrc: 'images/productos/IMG_20230323_101750091.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: '$35',
-        color: 'Black'
+        stock: '101'
     }
 
 ]

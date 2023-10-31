@@ -1,11 +1,13 @@
-import React from 'react';
-import ButtonBuy from '../components/button';
-import AddCart from '../components/addCart';
+import ButtonBuy from './button';
+import AddCart from './addCart';
+import React, { useState } from 'react';
+
+
 
 type Product = {
     id: number;
     name: string;
-    color: string;
+    stock: number;
     price: string;
     imageSrc: string;
     imageAlt: string;
@@ -17,16 +19,35 @@ type CardProps = {
     onClose: () => void;
 }
 
+
 export default function Card({ product, onClose }: CardProps) {
+
+
+    const [productToBuy, setproductToBuy] = useState([]);
+    const [cantidad, setCantidad] = useState(1);
+
+    const incrementarCantidad = () => {
+        if (cantidad < product.stock) {
+            setCantidad(cantidad + 1);
+        }
+    };
+
+    const disminuirCantidad = () => {
+        if (cantidad > 1) {
+            setCantidad(cantidad - 1);
+        }
+    };
+
+
     return (
-        <div className="z-20 bg-white fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center ">
+        <div className="z-30 bg-white fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center ">
             <div className="p-8 max-w-md md:max-w-none bg-gray-100 rounded-lg">
                 <button className="absolute top-2 right-2 text-md text-gray-500 hover:text-gray-700" onClick={onClose}>
                     Cerrar
                 </button>
-                <h2 className="text-3xl mt-16 font-bold text-gray-900 md:hidden ">Detalles del Producto</h2>
+                <h2 className="text-3xl mt-32 font-bold text-gray-900 md:hidden ">Detalles del Producto</h2>
 
-                <div className="mt-6 md:grid md:grid-cols-6 ">
+                <div className="mt-16 mb-6 md:grid md:grid-cols-6 ">
                     <div className='hidden md:flex flex-col items-center'>
                         <img
                             src={product.imageSrc}
@@ -54,11 +75,30 @@ export default function Card({ product, onClose }: CardProps) {
                     </div>
                     <div className='flex flex-col col-span-2'>
                         <h3 className="hidden md:block w-full text-xl font-semibold text-gray-900">{product.name}</h3>
-                        <p className="text-sm text-gray-500">Color: {product.color}</p>
+                        <p className="text-sm text-gray-500">Stock: {product.stock}</p>
                         <p className="text-xl py-3 font-medium text-gray-900">{product.price}</p>
                         <div className='w-full grid grid-rows-2 gap-2'>
+
+                            <div className="flex items-center">
+                                <button
+                                    onClick={disminuirCantidad}
+                                    className="px-4 py-2 bg-gray-200 text-gray-700 rounded-l"
+                                >
+                                    -
+                                </button>
+                                <div className="px-4 py-2 bg-gray-200 text-gray-700">
+                                    {cantidad}
+                                </div>
+                                <button
+                                    onClick={incrementarCantidad}
+                                    className="px-4 py-2 bg-gray-200 text-gray-700 rounded-r"
+                                >
+                                    +
+                                </button>
+                            </div>
                             <ButtonBuy label="Comprar" linkTo="#" />
                             <AddCart label="Agregar al carrito" linkTo="#" />
+
                         </div>
                         <h2 className="text-lg py-2 font-bold text-gray-900">Descripcion</h2>
                         <p className="text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam tenetur ratione eveniet commodi modi iusto perferendis dignissimos itaque omnis maxime delectus voluptates eos deserunt laborum provident, quo facilis deleniti fugit.</p>

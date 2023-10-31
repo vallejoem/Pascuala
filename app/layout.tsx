@@ -2,16 +2,14 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Norican, Borel } from 'next/font/google'
-import Link from 'next/link'
 import Image from 'next/image';
+import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faShoppingCart, faBars } from '@fortawesome/free-solid-svg-icons'
 import { faSquareWhatsapp, faSquareInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons'
-import { faAt } from '@fortawesome/free-solid-svg-icons'
-import { Fragment } from 'react';
-import React, { useState } from 'react';
-import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { faAt, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { useState, useRef } from 'react';
+import { Button, Checkbox, Label, Modal, TextInput } from 'flowbite-react';
 
 const norican = Norican({
   subsets: ['latin'],
@@ -40,9 +38,12 @@ export default function RootLayout({
     setIsMenuVisible(!isMenuVisible);
   };
 
+  const [openModal, setOpenModal] = useState<string | undefined>();
+  const emailInputRef = useRef<HTMLInputElement>(null)
+
   return (
     <html lang="en">
-      <body className='relative bg-fuchsia-300 md:bg-fuchsia-100'>
+      <body className='relative'>
         <div className='fixed top-0 right-0 left-0 z-10'>
           <nav className='grid ps-2 md:grid-cols-3 md:h-[100px] bg-fuchsia-700 border-b border-black nav1'>
             <div className='col-span-2 md:col-auto flex pt-2 items-center justify-center md:pt-0'>
@@ -65,16 +66,59 @@ export default function RootLayout({
               </form>
             </div>
             <div className="flex items-center place-self-end pe-4 md:place-self-auto md:justify-center md:w-full">
-                <Link className='p-3 text-fuchsia-200 hover:text-fuchsia-950 hidden md:block' href="/login">
-                  <FontAwesomeIcon icon={faUser} size='2x'/>
-                </Link>
-                <Link className='p-3 text-fuchsia-200 hover:text-fuchsia-950' href="/cart">
+              <Button className='p-3 text-fuchsia-200 hover:text-fuchsia-950 hidden md:block border-none' onClick={() => setOpenModal('initial-focus')}>
+                <FontAwesomeIcon icon={faUser} size='2x' />
+              </Button>
+              <Modal
+                show={openModal === 'initial-focus'}
+                size="md"
+                popup
+                onClose={() => setOpenModal(undefined)}
+                initialFocus={emailInputRef}
+              >
+                <Modal.Header />
+                <Modal.Body>
+                  <div className="p-5 bg-fuchsia-200 space-y-6">
+                    <h3 className="text-xl font-medium text-gray-900 dark:text-white">Inicia sesion</h3>
+                    <div>
+                      <div className="mb-2 block">
+                        <Label htmlFor="email" value="Correo electronico" />
+                      </div>
+                      <TextInput sizing="sm" id="email" ref={emailInputRef} placeholder="nombre@correo.com" required />
+                    </div>
+                    <div>
+                      <div className="mb-2 block">
+                        <Label htmlFor="password" value="Contraseña" />
+                      </div>
+                      <TextInput sizing="sm" id="password" type="password" required />
+                    </div>
+                    <div className="flex justify-between">
+                      <div className="flex items-center gap-2">
+                        <Checkbox id="remember" />
+                        <Label htmlFor="remember">Recordarme</Label>
+                      </div>
+                      <a href="/modal" className="text-sm text-cyan-700 hover:underline dark:text-cyan-500">
+                        Olvidaste tu contraseña?
+                      </a>
+                    </div>
+                    <div className="w-full">
+                      <Button className="bg-indigo-500">Ingrese con su cuenta</Button>
+                    </div>
+                    <div className="flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300">
+                      <a href="/Login" className="text-cyan-700 hover:underline dark:text-cyan-500">
+                        Crea una cuenta nueva
+                      </a>
+                    </div>
+                  </div>
+                </Modal.Body>
+              </Modal>
+              <Link className='p-3 text-fuchsia-200 hover:text-fuchsia-950' href="./cart">
 
-                  <FontAwesomeIcon icon={faShoppingCart} size='2x'/>
+                <FontAwesomeIcon icon={faShoppingCart} size='2x' />
 
-                </Link>
+              </Link>
             </div>
-            
+
           </nav>
           <nav className='h-[60px] flex items-center justify-start md:justify-center bg-fuchsia-600 rounded-b-3xl shadow-fuchsia-700/50 nav2 '>
             <div className='flex ps-4 md:hidden'>
@@ -89,55 +133,101 @@ export default function RootLayout({
               {isMenuVisible && (
                 <div
                   id='menu'
-                  className='absolute left-0 mt-11 z-50 bg-fuchsia-600 border border-fuchsia-200 rounded-md shadow-md'
+                  className='absolute left-0 mt-11 z-50 bg-fuchsia-600 border  border-fuchsia-200 rounded-md shadow-md'
                 >
-                  <Link
-                    className={`${borel.className} flex  px-3 pt-4 pb-1 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
-                    href='/'
-                  >
-                    Home
-                  </Link>
-                  <Link
-                    className={`${borel.className} block px-3 py-2 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
-                    href='/about'
-                  >
-                    Acerca de
-                  </Link>
-                  <Link
-                    className={`${borel.className} block px-3 py-2 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
-                    href='/products'
-                  >
-                    Productos
-                  </Link>
+                  <div>
+                    <a className={`${borel.className} block  px-3 pt-4 pb-1 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`} href='/'>
+                      Home
+                    </a>
+                  </div>
+                  <div>
+                    <a
+                      className={`${borel.className} block px-3 py-2 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
+                      href='/about'
+                    >
+                      Acerca de
+                    </a>
+                  </div>
+                  <div>
+                    <a
+                      className={`${borel.className} block px-3 py-2 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
+                      href='/products'
+                    >
+                      Productos
+                    </a>
+                  </div>
+                  <div>
+                    <a
+                      className={`${borel.className} block px-3 py-2 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
+                      onClick={() => setOpenModal('initial-focus')}
+                    >
+                      Cuenta
+                    </a>
+                  </div>
                 </div>
               )}
             </div>
-            <div className='hidden md:flex bg-fuchsia-600 h-full justify-center'>
-              <Link
-                className={`${borel.className} px-3 flex items-center text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700 h-full`}
-                href='/'
-              >
-                Home
-              </Link>
-              <Link
-                className={`${borel.className} px-3 flex items-center text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700 h-full`}
-                href='/about'
-              >
-                Acerca de
-              </Link>
-              <Link
-                className={`${borel.className} px-3 flex items-center text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700 h-full`}
-                href='/products'
-              >
-                Productos
-              </Link>
+            <div className='hidden h-full md:flex bg-fuchsia-600 h-full items-center justify-center'>
+              <div className='flex h-full items-center ' >
+                <a className={`${borel.className} flex h-full px-3 pt-4 pb-1 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`} href='/'>
+                  Home
+                </a>
+              </div>
+              <div className='flex h-full items-center ' >
+                <a
+                  className={`${borel.className} flex h-full px-3 py-4 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
+                  href='/about'
+                >
+                  Acerca de
+                </a>
+              </div>
+              <div className='flex flex-col relative h-full items-center' >
+                <button className={`${borel.className} flex h-full px-3 py-4 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`} onClick={toggleMenu}>
+                  Productos
+                  <FontAwesomeIcon className='text-fuchsia-200 pb-2 ps-2 hover:text-fuchsia-700' size='sm' icon={faCaretDown} />
+                </button>
+                {isMenuVisible && (
+                  <div
+                    id='menu'
+                    className='z-50 bg-fuchsia-600 absolute top-14 max-w-screen-md justify-center items-center rounded-b-3xl'
+                  >
+                    <ul className='flex justify-evenly items-center w-full'>
+                      <li>
+                        <a className={`${borel.className} flex p-4 text-xl text-fuchsia-200 hover:text-fuchsia-300`} href='/products'>
+                          Muñecas
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          className={`${borel.className} flex p-4 text-xl text-fuchsia-200 hover:text-fuchsia-300`}
+                          href='/products'
+                        >
+                          Indumentaria
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          className={`${borel.className} flex p-4 text-xl text-fuchsia-200 hover:text-fuchsia-300`}
+                          href='/products'
+                        >
+                          Accesorios
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
-
           </nav>
         </div>
         {children}
+        <div className='hidden md:flex fixed top-44 right-16 z-20'>
+          <a className=" text-center " href="https://api.whatsapp.com/send?phone=5492233023017" target='_blank'>
+            <FontAwesomeIcon className='text-green-400 hover:text-green-600 p-1' size='4x' icon={faSquareWhatsapp} />
+          </a>
+        </div>
         <section className={borel.className + ' flex content-center '} >
-          <div className="grid grid-rows- h-full md:grid-cols-3 bg-fuchsia-600 flex p-3 h-64 rounded-t-3xl content-center w-full">
+          <div className="grid h-full md:grid-cols-3 md:grid-rows-2 bg-fuchsia-600 flex p-3 h-64 rounded-t-3xl content-center w-full">
             <div className="flex flex-col p-5">
               <ul>
                 <li className="list-group-item">
@@ -152,12 +242,9 @@ export default function RootLayout({
                 <li className="list-group-item">
                   <a href="./subscribe" className="text-fuchsia-200 text-xl">Suscribite!!!</a>
                 </li>
-                <li className="list-group-item">
-                  <a href="#" className="text-fuchsia-200 text-xl">Medios de pago</a>
-                </li>
               </ul>
             </div>
-            <div className="flex flex-col items-center ">
+            <div className="flex flex-col md:col-span-2 items-center ">
               <h2 className="text-fuchsia-200 text-3xl m-3 py-3">Seguinos en nuestras redes !!!</h2>
               <div className="flex pb-3">
                 <a className="link-redes" href="https://www.facebook.com/pascuala.pequenascosturas" target="_blank">
@@ -174,6 +261,7 @@ export default function RootLayout({
                 </a>
               </div>
             </div>
+
           </div>
         </section>
         <footer>
@@ -181,7 +269,7 @@ export default function RootLayout({
             <p>&copy Grupo C4</p>
           </div>
         </footer>
-      </body>
-    </html>
+      </body >
+    </html >
   )
 }
