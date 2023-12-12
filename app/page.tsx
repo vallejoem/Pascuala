@@ -1,4 +1,4 @@
-'use clilent'
+'use client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Norican, Borel } from 'next/font/google'
 

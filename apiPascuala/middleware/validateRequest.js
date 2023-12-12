@@ -8,7 +8,8 @@ const validateRequest = (req,resp,next,schema)=>{
     if(error){
         console.log(error)
         const message = error.details.map(x=>x.message).join(', ');
-        resp.status(400).json(message);
+        resp.status(400).json({ message: message });
+
     }
     else{
         req.body = value;

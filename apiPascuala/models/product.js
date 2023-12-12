@@ -16,13 +16,19 @@ module.exports = (sequelize, DataTypes) => {
   product.init({
     code_product: DataTypes.STRING,
     name: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     price: DataTypes.FLOAT,
     stock: DataTypes.INTEGER,
-    photo: DataTypes.STRING
+    photo: {
+      type:DataTypes.STRING,
+      get(){
+       return this.getDataValue('photo') ?  `http://localhost:4500/public/products/${this.getDataValue('photo')}` :'';
+      }
+     }
   }, {
     sequelize,
     modelName: 'product',
+    paranoid:true
   });
   return product;
 };
