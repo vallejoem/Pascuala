@@ -24,19 +24,19 @@ export default function Card({ product, onClose }: CardProps) {
 
 
     const [productToBuy, setproductToBuy] = useState([]);
-    const [cantidad, setCantidad] = useState(1);
+    //const [cantidad, setCantidad] = useState(1);
 
-    const incrementarCantidad = () => {
-        if (cantidad < product.stock) {
-            setCantidad(cantidad + 1);
-        }
-    };
+    //const incrementarCantidad = () => {
+    //    if (cantidad < product.stock) {
+     //       setCantidad(cantidad + 1);
+      //  }
+    //};
 
-    const disminuirCantidad = () => {
-        if (cantidad > 1) {
-            setCantidad(cantidad - 1);
-        }
-    };
+    //const disminuirCantidad = () => {
+     //   if (cantidad > 1) {
+    //        setCantidad(cantidad - 1);
+    //    }
+    //};
 
 
     return (
@@ -75,29 +75,11 @@ export default function Card({ product, onClose }: CardProps) {
                     </div>
                     <div className='flex flex-col col-span-2'>
                         <h3 className="hidden md:block w-full text-xl font-semibold text-gray-900">{product.name}</h3>
-                        <p className="text-sm text-gray-500">Stock: {product.stock}</p>
-                        <p className="text-xl py-3 font-medium text-gray-900">{product.price}</p>
-                        <div className='w-full grid grid-rows-2 gap-2'>
+                        <div className='w-full py-3 grid grid-rows-1 gap-2'>
 
-                            <div className="flex items-center">
-                                <button
-                                    onClick={disminuirCantidad}
-                                    className="px-4 py-2 bg-gray-200 text-gray-700 rounded-l"
-                                >
-                                    -
-                                </button>
-                                <div className="px-4 py-2 bg-gray-200 text-gray-700">
-                                    {cantidad}
-                                </div>
-                                <button
-                                    onClick={incrementarCantidad}
-                                    className="px-4 py-2 bg-gray-200 text-gray-700 rounded-r"
-                                >
-                                    +
-                                </button>
-                            </div>
-                            <ButtonBuy label="Comprar" linkTo="#" />
-                            <AddCart label="Agregar al carrito" linkTo="#" />
+                            
+                            <ButtonBuy label="Consultar" linkTo="https://api.whatsapp.com/send?phone=5492233023017" />
+                            
 
                         </div>
                         <h2 className="text-lg py-2 font-bold text-gray-900">Descripcion</h2>

@@ -12,7 +12,7 @@ const products = [
         price: '$35',
         stock: '33'
     },
-    {
+    { 
         id: 2,
         categoria: 'muñecas',
         name: 'Barbie',

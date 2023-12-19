@@ -45,8 +45,8 @@ export default function RootLayout({
     <html lang="en">
       <body className='relative'>
         <div className='fixed top-0 right-0 left-0 z-10'>
-          <nav className='grid ps-2 md:grid-cols-3 md:h-[100px] bg-fuchsia-700 border-b border-black nav1'>
-            <div className='col-span-2 md:col-auto flex pt-2 items-center justify-center md:pt-0'>
+          <nav className='grid grid-cols-1 md:grid-cols-3 md:h-[100px] bg-fuchsia-700 border-b border-black nav1'>
+            <div className='col-span-2 py-3 md:col-auto flex pt-2 items-center justify-center md:pt-0'>
               <Link className='w-auto flex items-center ' href='/'>
                 <Image
                   src="/images/image1.png"
@@ -55,70 +55,16 @@ export default function RootLayout({
                   height={60}
                   objectFit="cover"
                 />
-                <span className={norican.className + ' pl-3 text-fuchsia-200'}>Pascuala</span>
+                <span className={norican.className + ' pl-3 text-fuchsia-200'}>Ropa para muñecas</span>
 
               </Link>
             </div>
-            <div className='flex items-center justify-center grow '>
+            <div className='flex items-center py-3 justify-center grow '>
               <form className=" flex items-center md:w-full search-form">
                 <input className='w-full rounded-l-lg p-1' type="text" placeholder=" Buscar" />
                 <button className='bg-fuchsia-200  p-1 rounded-r-lg hover:bg-fuchsia-300' type="submit">  Buscar</button>
               </form>
             </div>
-            <div className="flex items-center place-self-end pe-4 md:place-self-auto md:justify-center md:w-full">
-              <Button className='p-3 text-fuchsia-200 hover:text-fuchsia-950 hidden md:block border-none' onClick={() => setOpenModal('initial-focus')}>
-                <FontAwesomeIcon icon={faUser} size='2x' />
-              </Button>
-              <Modal
-                show={openModal === 'initial-focus'}
-                size="md"
-                popup
-                onClose={() => setOpenModal(undefined)}
-                initialFocus={emailInputRef}
-              >
-                <Modal.Header />
-                <Modal.Body>
-                  <div className="p-5 bg-fuchsia-200 space-y-6">
-                    <h3 className="text-xl font-medium text-gray-900 dark:text-white">Inicia sesion</h3>
-                    <div>
-                      <div className="mb-2 block">
-                        <Label htmlFor="email" value="Correo electronico" />
-                      </div>
-                      <TextInput sizing="sm" id="email" ref={emailInputRef} placeholder="nombre@correo.com" required />
-                    </div>
-                    <div>
-                      <div className="mb-2 block">
-                        <Label htmlFor="password" value="Contraseña" />
-                      </div>
-                      <TextInput sizing="sm" id="password" type="password" required />
-                    </div>
-                    <div className="flex justify-between">
-                      <div className="flex items-center gap-2">
-                        <Checkbox id="remember" />
-                        <Label htmlFor="remember">Recordarme</Label>
-                      </div>
-                      <a href="/modal" className="text-sm text-cyan-700 hover:underline dark:text-cyan-500">
-                        Olvidaste tu contraseña?
-                      </a>
-                    </div>
-                    <div className="w-full">
-                      <Button className="bg-indigo-500">Ingrese con su cuenta</Button>
-                    </div>
-                    <div className="flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300">
-                      <a href="/Login" className="text-cyan-700 hover:underline dark:text-cyan-500">
-                        Crea una cuenta nueva
-                      </a>
-                    </div>
-                  </div>
-                </Modal.Body>
-              </Modal>
-              <Link className='p-3 text-fuchsia-200 hover:text-fuchsia-950' href="./cart">
-
-                <FontAwesomeIcon icon={faShoppingCart} size='2x' />
-
-              </Link>
-            </div>
-
           </nav>
           <nav className='h-[60px] flex items-center justify-start md:justify-center bg-fuchsia-600 rounded-b-3xl shadow-fuchsia-700/50 nav2 '>
             <div className='flex ps-4 md:hidden'>
@@ -156,14 +102,6 @@ export default function RootLayout({
                       Productos
                     </a>
                   </div>
-                  <div>
-                    <a
-                      className={`${borel.className} block px-3 py-2 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
-                      onClick={() => setOpenModal('initial-focus')}
-                    >
-                      Cuenta
-                    </a>
-                  </div>
                 </div>
               )}
             </div>
@@ -181,41 +119,13 @@ export default function RootLayout({
                   Acerca de
                 </a>
               </div>
-              <div className='flex flex-col relative h-full items-center' >
-                <button className={`${borel.className} flex h-full px-3 py-4 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`} onClick={toggleMenu}>
+              <div className='flex h-full items-center ' >
+                <a
+                  className={`${borel.className} flex h-full px-3 py-4 text-xl text-fuchsia-200 hover:bg-fuchsia-300 hover:text-fuchsia-700`}
+                  href='/products'
+                >
                   Productos
-                  <FontAwesomeIcon className='text-fuchsia-200 pb-2 ps-2 hover:text-fuchsia-700' size='sm' icon={faCaretDown} />
-                </button>
-                {isMenuVisible && (
-                  <div
-                    id='menu'
-                    className='z-50 bg-fuchsia-600 absolute top-14 max-w-screen-md justify-center items-center rounded-b-3xl'
-                  >
-                    <ul className='flex justify-evenly items-center w-full'>
-                      <li>
-                        <a className={`${borel.className} flex p-4 text-xl text-fuchsia-200 hover:text-fuchsia-300`} href='/products'>
-                          Muñecas
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className={`${borel.className} flex p-4 text-xl text-fuchsia-200 hover:text-fuchsia-300`}
-                          href='/products'
-                        >
-                          Indumentaria
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className={`${borel.className} flex p-4 text-xl text-fuchsia-200 hover:text-fuchsia-300`}
-                          href='/products'
-                        >
-                          Accesorios
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                )}
+                </a>
               </div>
             </div>
           </nav>
@@ -227,7 +137,7 @@ export default function RootLayout({
           </a>
         </div>
         <section className={borel.className + ' flex content-center '} >
-          <div className="grid h-full md:grid-cols-3 md:grid-rows-2 bg-fuchsia-600 flex p-3 h-64 rounded-t-3xl content-center w-full">
+          <div className="grid h-full md:grid-cols-3 md:grid-rows-1 bg-fuchsia-600 flex p-3 h-64 rounded-t-3xl content-center w-full">
             <div className="flex flex-col p-5">
               <ul>
                 <li className="list-group-item">

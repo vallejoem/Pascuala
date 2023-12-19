@@ -13,6 +13,7 @@ const getAll = async (req, res) => {
         res.status(200).json({ error: false, message: 'Listado de Productos', data: products });
     }
     catch (e) {
+        console.error('Error fetching products:', e);
         res.status(400).json({ error: true, message: e });
     }
 
@@ -21,10 +22,11 @@ const getAll = async (req, res) => {
 const createProduct = async (req, res) => {
 
     try {
-
+        console.log(req.body);
         let body = req.body;
-        if (req.file) {
-            body.photo = req.file.filename;
+
+        if (req.files && req.files.length === 3) {
+            body.images = req.files.map(file => file.filename);
         }
         let products = await Products.create(body);
         res.status(200).json({ error: false, message: 'Producto Añadido Exitosamente', data: products });
@@ -39,25 +41,28 @@ const createProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
 
     try {
-        let id=req.params.id;
-
+        let id = req.params.id;
+        console.log(id);
         let product = await Products.findByPk(id);
-
-        if(product){
+        if (product) {
             let body = req.body;
-            if (req.file) {
-                body.photo = req.file.filename;
+            if (req.files) {
+                body.images = req.files.map(file => file.filename);
 
-                if(product.photo){
-                    fs.unlinkSync('public/products/'+product.photo);
+                if (product.images) {
+                    const imagePaths = JSON.parse(product.images);
+                    imagePaths.forEach(imagePath => {
+                        const fullPath = 'public/products/'+imagePath;
+                        fs.unlinkSync(fullPath);
+                    });
                 }
 
             }
-            await Products.update(body,{where:{id:id}});
-            res.status(200).json({ error: false, message: 'Producto Modificado Exitosamente', data: null});
+            await Products.update(body, { where: { id: id } });
+            res.status(200).json({ error: false, message: 'Producto Modificado Exitosamente', data: null });
         }
-        else{
-            res.status(404).json({ error: true, message: 'El id de producto no existe.!' });   
+        else {
+            res.status(404).json({ error: true, message: 'El id de producto no existe.!' });
         }
 
     }
@@ -74,26 +79,28 @@ const deleteProduct = async (req, res) => {
 
         let product = await Products.findByPk(id);
 
-        if(product){
+        if (product) {
             await Products.destroy({ where: { id: id } });
             res.status(200).json({ error: false, message: 'Producto Eliminado Exitosamente', data: null });
         }
-        else{
+        else {
+            console.error('Error fetching products:', e);
             res.status(404).json({ error: true, message: 'El id de producto no existe.!' });
         }
-       /* await Products.findAll({ where: { id: id } }).then(async (result) => {
-
-            if (result.length > 0) {
-
-                await Products.destroy({ where: { id: id } });
-                res.status(200).json({ error: false, message: 'Producto Eliminado Exitosamente', data: null });
-            }
-            else {
-                res.status(404).json({ error: true, message: 'El id de producto no existe.!' });
-            }
-        })*/
+        /* await Products.findAll({ where: { id: id } }).then(async (result) => {
+ 
+             if (result.length > 0) {
+ 
+                 await Products.destroy({ where: { id: id } });
+                 res.status(200).json({ error: false, message: 'Producto Eliminado Exitosamente', data: null });
+             }
+             else {
+                 res.status(404).json({ error: true, message: 'El id de producto no existe.!' });
+             }
+         })*/
     }
     catch (e) {
+        console.error('Error fetching products:', e);
         res.status(400).json({ error: true, message: e });
     }
 
