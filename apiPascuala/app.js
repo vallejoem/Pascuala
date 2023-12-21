@@ -31,6 +31,10 @@ const invalidPathHandler = (req,resp,next) =>{
     resp.json({ error: true, message: 'INVALIDA LA RUTA'});
 }
 
+
+app.get('/', (req, res) => {
+    res.json({ message: 'Welcome to the main page.' });
+});
 /*app.get('/',(req,res )=>{
     res.json({'message':'Welcome pascuala.'});
     //send envia datos de cualquier tipo

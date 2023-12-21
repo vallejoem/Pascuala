@@ -1,23 +1,15 @@
 'use client'
 import { Borel } from 'next/font/google'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NextPage } from 'next';
 import ProductList from '../components/ProductList';
 import CreateProductForm from '../components/CreateProductForm';
+import { Product } from '../types/types';
 
 const borel = Borel({
     subsets: ['latin'],
     weight: '400'
 })
-
-interface Product {
-    // Define la interfaz del objeto Product según tus necesidades
-    id: number;
-    name: string;
-    description: string;
-    price: number;
-    stock: number;
-}
 
 const AddProductPage: NextPage = () => {
     const [products, setProducts] = useState<Product[]>([]);
@@ -37,35 +29,54 @@ const AddProductPage: NextPage = () => {
                 // Producto creado con éxito, actualizar la lista de productos
                 fetchProducts();
             } else {
-                // Manejar errores de la API
+                // Maneja errores de la API
                 const data = await response.json();
                 console.error('Error creating product:', data.message);
             }
         } catch (error) {
-            // Manejar errores de red u otros
+            // Maneja errores de red u otros
             console.error('Network error:', error);
         }
     };
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('/products');
+            
+            const response = await fetch('http://localhost:3500/products');
+            console.log(response);
             if (response.ok) {
                 const data = await response.json();
-                setProducts(data);
+                const productsWithParsedData = data.data.map((product: Product) => ({
+                    ...product,
+                    images: product.images
+                }));
+    
+                setProducts(productsWithParsedData);
             } else {
-                console.error('Error fetching products:', response.status);
+                // Verificar si la respuesta es JSON antes de intentar analizar
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
+                    const data = await response.json();
+                    console.error('Error fetching products:', data.message);
+                } else {
+                    console.error('Error fetching products. Unexpected response:', response.statusText);
+                }
             }
         } catch (error) {
-            console.error('Network error:', error);
+            console.error('error de red:', error);
         }
     };
+
+    useEffect(() => {
+        // Al cargar el componente, cargar la lista de productos
+        fetchProducts();
+    }, []);
 
     return (
         <div className={`${borel.className} mt-48 md:mt-44`}>
             <h1 className=''>Add Product Page</h1>
             <CreateProductForm onCreateProduct={handleCreateProduct} />
-            
+            <ProductList products={products} />
         </div>
     );
 };
