@@ -1,13 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Alert } from 'flowbite-react';
 
-const CreateProductForm = ({ onCreateProduct }) => {
-    const [productCode, setProductCode] = useState('');
-    const [productCategoria, setProductCategoria] = useState('');
-    const [productName, setProductName] = useState('');
-    const [productDescription, setProductDescription] = useState('');
-    const [productPrice, setProductPrice] = useState('');
-    const [productStock, setProductStock] = useState('');
+const CreateProductForm = ({ onSubmit, fetchProducts,  productToEdit }) => {
+    const [productCode, setProductCode] = useState(productToEdit ? productToEdit.code_product : '');
+    const [productCategoria, setProductCategoria] = useState(productToEdit ? productToEdit.categoria : '');
+    const [productName, setProductName] = useState(productToEdit ? productToEdit.name : '');
+    const [productDescription, setProductDescription] = useState(productToEdit ? productToEdit.description : '');
+    const [productPrice, setProductPrice] = useState(productToEdit ? productToEdit.price : '');
+    const [productStock, setProductStock] = useState(productToEdit ? productToEdit.stock : '');
     const [productImages, setProductImages] = useState([]);
+
+    useEffect(() => {
+        if (productToEdit) {
+            setProductCode(productToEdit.code_product || '');
+            setProductCategoria(productToEdit.categoria || '');
+            setProductName(productToEdit.name || '');
+            setProductDescription(productToEdit.description || '');
+            setProductPrice(productToEdit.price || '');
+            setProductStock(productToEdit.stock || '');
+        }
+    }, [productToEdit]);
+
 
     const handleImageChange = (e) => {
         const files = Array.from(e.target.files);
@@ -31,22 +44,29 @@ const CreateProductForm = ({ onCreateProduct }) => {
         });
 
         try {
-            // Hacer una solicitud POST a tu API para crear un nuevo producto
-            const response = await fetch('http://localhost:3500/products', {
-                method: 'POST',
-                body: formData,
-            });
+            let response;
+
+            if (productToEdit) {
+                response = await fetch(`http://localhost:3500/products/${productToEdit.id}`, {
+                    method: 'PUT',
+                    body: formData,
+                });
+            } else {
+                response = await fetch('http://localhost:3500/products', {
+                    method: 'POST',
+                    body: formData,
+                });
+            }
 
             if (response.ok) {
-                // Producto creado con éxito, realizar alguna acción (actualizar la lista, etc.)
-                onCreateProduct();
+                console.log('onSubmit executed successfully');
+                fetchProducts();
+
             } else {
-                // Manejar errores de la API
                 const data = await response.json();
-                console.error('Error al crear producto:', data.message);
+                console.error('Error al guardar producto:', data.message);
             }
         } catch (error) {
-            // Manejar errores de red u otros
             console.error('Network error:', error);
         }
     };
@@ -74,7 +94,8 @@ const CreateProductForm = ({ onCreateProduct }) => {
             <label>Imagenes:</label>
             <input type="file" multiple onChange={handleImageChange} required />
 
-            <button type="submit" >Crear nuevo producto</button>
+            <button type="submit">{productToEdit ? 'Guardar cambios' : 'Crear nuevo producto'}</button>
+
         </form>
     );
 };
