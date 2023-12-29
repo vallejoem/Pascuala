@@ -50,15 +50,17 @@ const ProductList: React.FC<ProductListProps> = ({ products,  fetchProducts, set
             <table>
                 <thead className='bg-fuchsia-200'>
                     <tr>
+                        <th>Categoria</th>
                         <th>Nombre</th>
                         <th>Descripción</th>
                         <th>Precio</th>
                         <th>Stock</th>
                     </tr>
                 </thead>
-                <tbody className='bg-fuchsia-700'>
+                <tbody className='bg-fuchsia-500'>
                     {products.map(product => (
                         <tr key={product.id}>
+                            <td>{product.categoria}</td>
                             <td>{product.name}</td>
                             <td>{product.description}</td>
                             <td>{product.price}</td>

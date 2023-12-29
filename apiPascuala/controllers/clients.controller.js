@@ -5,35 +5,8 @@ const { Op } = require("sequelize");
 const getAllClients = async (req, resp) => {
     try {
         console.log("Entrando en getAllClients");
-        let filter = {};
-        if(req.query.q){
-            filter ={
-                where: {
-                    [Op.or]: [
-                        {
-                            name: {
-                                [Op.like]: `%${req.query.q}%`
-                            }
-                        }, {
-                            last_name: {
-                                [Op.like]: `%${req.query.q}%`
-                            }
-                        }, {
-                            email: {
-                                [Op.like]: `%${req.query.q}%`
-                            }
-                        }, {
-                            dni: {
-                                [Op.like]: `%${req.query.q}%`
-                            }
-                        }
-                    ] 
-                }
-            };
-        }
+        let clients = await db.client.findAll();
         
-        let clients = await db.client.findAll(filter);
-        console.log("Consulta exitosa. Resultados:", clients);
         resp.status(200).json({ error: false, message: 'Listado Clientes', data:clients });
     }
     catch (e) {
@@ -82,10 +55,21 @@ const deleteClient = async (req, resp) => {
 const updateClient = async (req, resp) => {
     try {
         let id = req.params.id;
-        await db.client.update(req.body, { where: { id: id } });
-        resp.status(200).json({ error: false, message: 'Cliente Modificado exitosamente', data: null });
+        console.log(id);
+        let client = await db.client.findByPk(id);
+
+        console.log("Consulta exitosa. Resultados:", client);
+        if(client){
+            await db.client.update(req.body, { where: { id: id } });
+            resp.status(200).json({ error: false, message: 'Cliente Modificado exitosamente', data: null });
+        }
+        else{
+            resp.status(404).json({ error: true, message: 'ID cliente no se encuentra', data: null });
+        }
+        
     }
     catch (e) {
+        console.error("Error al actualizar cliente", e);
         resp.status(400).json({ error: true, message: e });
     }
 

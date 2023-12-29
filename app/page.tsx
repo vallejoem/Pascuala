@@ -1,30 +1,9 @@
 'use client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Norican, Borel } from 'next/font/google'
+import { Product } from '../app/types/types';
+import { useState, useEffect } from 'react';
 
-const callouts = [
-  {
-    name: 'American-Boy',
-    description: 'American-boy media estacion',
-    imageSrc: 'images/productos/IMG_20221202_130159175.jpg',
-    imageAlt: 'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
-    href: '#',
-  },
-  {
-    name: 'American-girl',
-    description: 'American-girl Jardinero rosa mas pulover',
-    imageSrc: 'images/productos/IMG_20230519_152819448.jpg',
-    imageAlt: 'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-    href: '#',
-  },
-  {
-    name: 'Barbie',
-    description: 'Barbie morocha primavera-verano',
-    imageSrc: 'images/productos/IMG_20230418_134839646.jpg',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#',
-  },
-]
 
 const norican = Norican({ 
   subsets: ['latin'],
@@ -35,6 +14,43 @@ const borel = Borel({
     weight:'400' })
 
 export default function Home() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:3500/products');
+            if (!response.ok) {
+                throw new Error('Error al obtener los productos');
+            }
+            const data = await response.json();
+
+            // Parsear las imágenes para todos los productos
+            const productsWithParsedImages = data.data.map((product: Product) => {
+                try {
+                    const imagesArray = JSON.parse(product.images);
+                    return { ...product, images: imagesArray };
+                } catch (error) {
+                    console.error("Error al analizar las imágenes del producto:", error);
+                    return product;
+                }
+            });
+
+            console.log(productsWithParsedImages);
+            setProducts(productsWithParsedImages);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+
+    useEffect(() => {
+
+
+        fetchData();
+    }, []);
+
+
   return (
     <div className='mt-48 md:mt-28'>
       <div className="bg-gray-100">
@@ -43,22 +59,22 @@ export default function Home() {
             <h2 className={`${borel.className} pt-3 text-3xl font-bold text-fuchsia-950`}>Colecciones Primavera-Verano</h2>
 
             <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
-              {callouts.map((callout) => (
-                <div key={callout.name} className="group relative">
+              {products.map((products) => (
+                <div key={products.name} className="group relative">
                   <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                     <img
-                      src={callout.imageSrc}
-                      alt={callout.imageAlt}
+                      src={`http://localhost:3500/public/products/${products.images[0]}`}
+                      alt={products.name}
                       className="h-full w-full object-cover object-top"
                     />
                   </div>
                   <h3 className="mt-6 text-sm text-gray-500">
-                    <a href={callout.href}>
+                    
                       <span className="absolute inset-0" />
-                      {callout.name}
-                    </a>
+                      {products.name}
+                    
                   </h3>
-                  <p className="text-base font-semibold text-gray-900">{callout.description}</p>
+                  <p className="text-base font-semibold text-gray-900">{products.description}</p>
                 </div>
               ))}
             </div>

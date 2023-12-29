@@ -1,5 +1,6 @@
 'use client'
 import { Borel } from 'next/font/google'
+import { useState, useEffect } from 'react';
 
 const borel = Borel({
     subsets: ['latin'],
@@ -21,6 +22,8 @@ export default function subscribe() {
                         <input  className='flex w-3/4 my-1 py-1' type="text" />
                         <label  className='flex w-3/4 text-left text-fuchsia-900 pt-2' htmlFor="">Correo Electronico:</label>
                         <input  className='flex w-3/4 my-1 py-1' type="text" />
+                        <label  className='flex w-3/4 text-left text-fuchsia-900 pt-2' htmlFor="">Telefono:</label>
+                        <input  className='flex w-3/4 my-1 py-1' type="number" />
                         <button className='text-center text-fuchsia-200 mt-3 mb-8 bg-fuchsia-500 w-3/4 rounded-lg pt-3 pb-2 hover:text-fuchsia-900 hover:bg-fuchsia-400' >Enviar</button>
                     </form>
                 </div>

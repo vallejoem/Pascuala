@@ -2,6 +2,7 @@ const express = require ('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const path = require('path');
 const port = 3500;
 
 const userRouter = require('./routers/users.router');
@@ -19,6 +20,8 @@ const corsOptions = {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
 /**ERROR HANDLER */
 const errorHandler=(error,req,resp,next)=>{
     const status = error.status || 400;

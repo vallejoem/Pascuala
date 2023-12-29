@@ -1,18 +1,8 @@
 import ButtonBuy from './button';
 import AddCart from './addCart';
 import React, { useState } from 'react';
+import { Product } from '../types/types';
 
-
-
-type Product = {
-    id: number;
-    name: string;
-    stock: number;
-    price: string;
-    imageSrc: string;
-    imageAlt: string;
-    href: string;
-};
 
 type CardProps = {
     product: Product;
@@ -21,23 +11,7 @@ type CardProps = {
 
 
 export default function Card({ product, onClose }: CardProps) {
-
-
-    const [productToBuy, setproductToBuy] = useState([]);
-    //const [cantidad, setCantidad] = useState(1);
-
-    //const incrementarCantidad = () => {
-    //    if (cantidad < product.stock) {
-     //       setCantidad(cantidad + 1);
-      //  }
-    //};
-
-    //const disminuirCantidad = () => {
-     //   if (cantidad > 1) {
-    //        setCantidad(cantidad - 1);
-    //    }
-    //};
-
+    
 
     return (
         <div className="z-30 bg-white fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center ">
@@ -49,27 +23,20 @@ export default function Card({ product, onClose }: CardProps) {
 
                 <div className="mt-16 mb-6 md:grid md:grid-cols-6 ">
                     <div className='hidden md:flex flex-col items-center'>
-                        <img
-                            src={product.imageSrc}
-                            alt={product.imageAlt}
-                            className="mt-4 h-52 w-full w-5/6 object-cover object-center"
-                        />
-                        <img
-                            src={product.imageSrc}
-                            alt={product.imageAlt}
-                            className="mt-4 h-52 w-full w-5/6 object-cover object-center"
-                        />
-                        <img
-                            src={product.imageSrc}
-                            alt={product.imageAlt}
-                            className="mt-4 h-52 w-full w-5/6 object-cover object-center"
-                        />
+                        {product.images.map((image, index) => (
+                            <img
+                                key={index}
+                                src={`http://localhost:3500/public/products/${image}`}
+                                alt={`${product.name} - Image ${index + 1}`}
+                                className="mt-4 h-52 w-full w-5/6 object-cover object-center"
+                            />
+                        ))}
                     </div>
                     <div className='flex flex-col col-span-3 justify-center items-center'>
                         <h3 className="w-full text-xl font-semibold text-gray-900 md:hidden ">{product.name}</h3>
                         <img
-                            src={product.imageSrc}
-                            alt={product.imageAlt}
+                            src={`http://localhost:3500/public/products/${product.images[0]}`}  // Muestra la primera imagen en la sección principal
+                            alt={`${product.name} - Main Image`}
                             className="mt-4 h-full md:h-full w-full md:w-3/4 object-cover object-center"
                         />
                     </div>

@@ -87,17 +87,6 @@ const deleteProduct = async (req, res) => {
             console.error('Error fetching products:', e);
             res.status(404).json({ error: true, message: 'El id de producto no existe.!' });
         }
-        /* await Products.findAll({ where: { id: id } }).then(async (result) => {
- 
-             if (result.length > 0) {
- 
-                 await Products.destroy({ where: { id: id } });
-                 res.status(200).json({ error: false, message: 'Producto Eliminado Exitosamente', data: null });
-             }
-             else {
-                 res.status(404).json({ error: true, message: 'El id de producto no existe.!' });
-             }
-         })*/
     }
     catch (e) {
         console.error('Error fetching products:', e);

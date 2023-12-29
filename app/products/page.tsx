@@ -1,36 +1,62 @@
 'use client'
 
-import React, { useState } from 'react';
-import products from './productos';
+import React, { useState, useEffect } from 'react';
+import { Product } from '../types/types';
 import Card from '../components/card';
 import { Borel } from 'next/font/google';
+
+
 
 const borel = Borel({
     subsets: ['latin'],
     weight: '400'
 })
 
-type Product = {
-    id: number;
-    categoria: string;
-    name: string;
-    color: string;
-    price: string;
-    imageSrc: string;
-    imageAlt: string;
-    href: string;
-    
-};
 
 export default function Productos() {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState<string | null>(null);
+    const [products, setProducts] = useState<Product[]>([]);
+
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:3500/products');
+            if (!response.ok) {
+                throw new Error('Error al obtener los productos');
+            }
+            const data = await response.json();
+
+            // Parsear las imágenes para todos los productos
+            const productsWithParsedImages = data.data.map((product: Product) => {
+                try {
+                    const imagesArray = JSON.parse(product.images);
+                    return { ...product, images: imagesArray };
+                } catch (error) {
+                    console.error("Error al analizar las imágenes del producto:", error);
+                    return product;
+                }
+            });
+
+            console.log(productsWithParsedImages);
+            setProducts(productsWithParsedImages);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+
+    useEffect(() => {
+
+
+        fetchData();
+    }, []);
 
     const handleProductClick = (product: Product) => {
         setSelectedProduct(product);
     }
 
-    const handleCategoriaClick = (categoria : string) => {
+    const handleCategoriaClick = (categoria: string) => {
         setCategoriaSeleccionada(categoria);
     }
 
@@ -62,18 +88,17 @@ export default function Productos() {
                         <div key={product.id} className="group relative" onClick={() => handleProductClick(product)}>
                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                                 <img
-                                    src={product.imageSrc}
-                                    alt={product.imageAlt}
-                                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                                    src={`http://localhost:3500/public/products/${product.images[0]}`}
+
+                                    alt={product.name}
+                                    className="h-full w-full object-contain object-center lg:h-full lg:w-full"
                                 />
                             </div>
                             <div className="mt-4 flex justify-between">
                                 <div>
                                     <h3 className="text-sm text-gray-700">
-                                        <a href={product.href}>
-                                            <span aria-hidden="true" className="absolute inset-0" />
-                                            {product.name}
-                                        </a>
+                                        <span aria-hidden="true" className="absolute inset-0" />
+                                        {product.name}
                                     </h3>
                                 </div>
                             </div>
