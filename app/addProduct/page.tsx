@@ -29,7 +29,6 @@ const AddProductPage: NextPage = () => {
 
                 setProducts(productsWithParsedData);
             } else {
-                // Verificar si la respuesta es JSON antes de intentar analizar
                 const contentType = response.headers.get('content-type');
                 if (contentType && contentType.includes('application/json')) {
                     const data = await response.json();
@@ -76,9 +75,9 @@ const AddProductPage: NextPage = () => {
     }, []);
 
     return (
-        <div className={`${borel.className} mt-48 md:mt-44`}>
-            <h1 className=''>Add Product Page</h1>
-            <button onClick={() => setCreateFormVisibility(true)}>
+        <div className={`${borel.className} bg-fuchsia-200 flex flex-col items-center mt-60 md:mt-44`}>
+            <h1 className='text-xl text-fuchsia-800'>Agregar nuevos productos</h1>
+            <button className='m-3 align-middle text-center bg-fuchsia-300 p-3 text-fuchsia-800 border border-fuchsia-950 rounded-lg' onClick={() => setCreateFormVisibility(true)}>
                 Agregar nuevo producto
             </button>
             {isCreateFormVisible && (

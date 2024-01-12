@@ -3,7 +3,8 @@ import React from 'react';
 import { useState } from 'react';
 import { Product } from '../types/types';
 import CreateProductForm from '../components/CreateProductForm';
-import { Alert } from 'flowbite-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare,faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 
 interface ProductListProps {
@@ -14,6 +15,11 @@ interface ProductListProps {
 
 const ProductList: React.FC<ProductListProps> = ({ products,  fetchProducts, setCreateFormVisibility  }) => {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+    const hideForm = () => {
+        setSelectedProduct(null);
+        setCreateFormVisibility(true); // Cambia la visibilidad del formulario a true
+    };
 
     const handleEdit = (productId: number) => {
         const productToEdit = products.find(product => product.id === productId);
@@ -45,36 +51,39 @@ const ProductList: React.FC<ProductListProps> = ({ products,  fetchProducts, set
         };
     }
     return (
-        <div className='bg-fuchsia-300'>
-            <h2 className='bg-fuchsia-500'>Lista de Productos</h2>
-            <table>
-                <thead className='bg-fuchsia-200'>
-                    <tr>
-                        <th>Categoria</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Precio</th>
-                        <th>Stock</th>
+        <div className='bg-fuchsia-200 w-full md:w-3/4'>
+            <h2 className='p-3 bg-fuchsia-400 w-full '>Lista de Productos</h2>
+            <div className="overflow-x-auto">
+            <table className='w-full table-auto border-collapse border border-slate-500 mb-5'>
+                <thead className='bg-fuchsia-300 '>
+                    <tr className='bg-fuchsia-300 align-middle text-center'>
+                        <th className='py-2 align-middle text-center'>Categoria</th>
+                        <th className='py-2 align-middle text-center'>Nombre</th>
+                        <th className='py-2 align-middle text-center'>Descripción</th>
+                        <th className='py-2 align-middle text-center'>Precio</th>
+                        <th className='py-2 align-middle text-center'>Stock</th>
+                        <th className='py-2 align-middle text-center'></th>
                     </tr>
                 </thead>
-                <tbody className='bg-fuchsia-500'>
+                <tbody className='bg-fuchsia-400 align-middle text-center'>
                     {products.map(product => (
                         <tr key={product.id}>
-                            <td>{product.categoria}</td>
-                            <td>{product.name}</td>
-                            <td>{product.description}</td>
-                            <td>{product.price}</td>
-                            <td>{product.stock}</td>
-                            <td>
+                            <td className='py-2 align-middle text-center'>{product.categoria}</td>
+                            <td className='py-2 align-middle text-center'>{product.name}</td>
+                            <td className='py-2 align-middle text-center'>{product.description}</td>
+                            <td className='py-2 align-middle text-center'>{product.price}</td>
+                            <td className='py-2 align-middle text-center'>{product.stock}</td>
+                            <td className='py-2 align-middle text-center'>
                                 {/* Botón de editar */}
-                                <button onClick={() => handleEdit(product.id)}>Editar</button>
+                                <button className='px-2' onClick={() => handleEdit(product.id)}><FontAwesomeIcon icon={faPenToSquare} /></button>
                                 {/* Botón de eliminar */}
-                                <button onClick={() => handleDelete(product.id)}>Eliminar</button>
+                                <button className='px-2' onClick={() => handleDelete(product.id)}><FontAwesomeIcon icon={faTrashCan} /></button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            </div>
             {selectedProduct && (
                 <CreateProductForm
                     onSubmit={() => {
@@ -83,6 +92,7 @@ const ProductList: React.FC<ProductListProps> = ({ products,  fetchProducts, set
                     }}
                     fetchProducts={fetchProducts}
                     productToEdit={selectedProduct}
+                    hideForm={hideForm}
                 />
             )}
         </div>

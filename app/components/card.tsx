@@ -50,7 +50,7 @@ export default function Card({ product, onClose }: CardProps) {
 
                         </div>
                         <h2 className="text-lg py-2 font-bold text-gray-900">Descripcion</h2>
-                        <p className="text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam tenetur ratione eveniet commodi modi iusto perferendis dignissimos itaque omnis maxime delectus voluptates eos deserunt laborum provident, quo facilis deleniti fugit.</p>
+                        <p className="text-sm text-gray-500">{product.description}</p>
                     </div>
                 </div>
             </div>
