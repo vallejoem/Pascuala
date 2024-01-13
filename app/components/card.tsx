@@ -19,9 +19,9 @@ export default function Card({ product, onClose }: CardProps) {
                 <button className="absolute top-2 right-2 text-md text-gray-500 hover:text-gray-700" onClick={onClose}>
                     Cerrar
                 </button>
-                <h2 className="text-3xl mt-32 font-bold text-gray-900 md:hidden ">Detalles del Producto</h2>
+                <h2 className="text-3xl mt-16 font-bold text-gray-900 md:hidden ">Detalles del Producto</h2>
 
-                <div className="mt-16 mb-6 md:grid md:grid-cols-6 ">
+                <div className="mt-3 md:mt-16 mb-6 md:grid md:grid-cols-6 ">
                     <div className='hidden md:flex flex-col items-center'>
                         {product.images.map((image, index) => (
                             <img
@@ -40,7 +40,7 @@ export default function Card({ product, onClose }: CardProps) {
                             className="mt-4 h-full md:h-full w-full md:w-3/4 object-cover object-center"
                         />
                     </div>
-                    <div className='flex flex-col col-span-2'>
+                    <div className='md:mt-5 flex flex-col col-span-2'>
                         <h3 className="hidden md:block w-full text-xl font-semibold text-gray-900">{product.name}</h3>
                         <div className='w-full py-3 grid grid-rows-1 gap-2'>
 
