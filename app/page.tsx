@@ -1,7 +1,5 @@
 'use client'
-import { Norican, Borel } from 'next/font/google'
-import { Product } from '../app/types/types';
-import { useState, useEffect } from 'react';
+import { Norican, Borel } from 'next/font/google';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 

@@ -1,7 +1,6 @@
 'use client'
-import { Borel } from 'next/font/google'
-import { useState, useEffect } from 'react';
-import SubscribeForm from '../components/subcribeForm'
+import { Borel } from 'next/font/google';
+import SubscribeForm from '../components/subcribeForm';
 
 
 const borel = Borel({
