@@ -139,9 +139,6 @@ export default function RootLayout({
                   <a href="./" className="text-fuchsia-200 text-xl">Inicio</a>
                 </li>
                 <li className="list-group-item">
-                  <a href="./FA" className="text-fuchsia-200 text-xl">Como comprar</a>
-                </li>
-                <li className="list-group-item">
                   <a href="./contacts" className="text-fuchsia-200 text-xl">Contactanos</a>
                 </li>
                 <li className="list-group-item">
@@ -171,7 +168,7 @@ export default function RootLayout({
         </section>
         <footer>
           <div className="bg-fuchsia-700 p-3">
-            <p>&copy Grupo C4</p>
+            <p>&copy; Grupo C4</p>
           </div>
         </footer>
       </body >

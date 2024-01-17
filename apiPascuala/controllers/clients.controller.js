@@ -20,7 +20,49 @@ const sendConfirmationEmail = (client) => {
         from: 'emilianovallejo@hotmail.com',
         to: client.email,
         subject: '¡Gracias por suscribirte!',
-        text: `Hola ${client.name} ${client.last_name},\n\nGracias por suscribirte a nuestro servicio. ¡Bienvenido!`,
+        html: `
+            <html>
+                <head>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            background-color: #f4f4f4;
+                            color: #333;
+                        }
+                        .container {
+                            max-width: 600px;
+                            margin: 0 auto;
+                            padding: 20px;
+                            background-color: #F0ABFC;
+                            border-radius: 5px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        }
+                        .header {
+                            background-color: #C026D3;
+                            color: #fff;
+                            padding: 10px;
+                            text-align: center;
+                            border-radius: 5px 5px 0 0;
+                        }
+                        .content {
+                            font-size: 16px; 
+                            padding: 20px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="header">
+                            <h1>¡Gracias por suscribirte!</h1>
+                        </div>
+                        <div class="content">
+                            <p>Hola ${client.name} ${client.last_name},</p>
+                            <p>Gracias por suscribirte!!! Te mantendremos informado con nuestras novedades. ¡Bienvenido!</p>
+                        </div>
+                    </div>
+                </body>
+            </html>
+        `,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
