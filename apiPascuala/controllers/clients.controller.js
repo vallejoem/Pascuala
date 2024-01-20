@@ -73,7 +73,6 @@ const getAllClients = async (req, resp) => {
     try {
         console.log("Entrando en getAllClients");
         let clients = await db.client.findAll();
-
         resp.status(200).json({ error: false, message: 'Listado Clientes', data: clients });
     }
     catch (e) {
@@ -87,7 +86,6 @@ const CreateClient = async (req, resp) => {
 
     try {
         let client = await db.client.create(req.body);
-        // Enviar correo electrónico
         sendConfirmationEmail(client);
         resp.status(200).json({ error: false, message: 'Cliente Creado exitosamente', data: client });
     }
@@ -111,8 +109,6 @@ const deleteClient = async (req, resp) => {
             }
 
         })
-
-
     }
     catch (e) {
         console.error("Error en deleteClient:", e);
@@ -141,10 +137,6 @@ const updateClient = async (req, resp) => {
         console.error("Error al actualizar cliente", e);
         resp.status(400).json({ error: true, message: e });
     }
-
-    // Función para enviar correo electrónico de confirmación
-    
-
 }
 
 module.exports = { getAllClients, CreateClient, deleteClient, updateClient }
