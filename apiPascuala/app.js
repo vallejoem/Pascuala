@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
+const nodemailer = require('nodemailer');
 const port = 3500;
 
 
@@ -10,6 +11,7 @@ const port = 3500;
 //app.METHOD(path,handler);
 const clientRouter = require('./routers/clients.router');
 const productRouter = require('./routers/products.router');
+const sendEmailRouter = require('./routers/sendEmail.router');
 
 const corsOptions = {
     origin: 'http://localhost:3000',
@@ -48,6 +50,7 @@ app.use(cors(corsOptions));
 
 app.use('/clients',clientRouter);
 app.use('/products',productRouter);
+app.use('/sendEmail', sendEmailRouter);
 
 
 

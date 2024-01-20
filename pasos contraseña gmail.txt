@@ -1,0 +1,16 @@
+la autenticación de dos factores (2FA) y una "Contraseña de Aplicación". Sigue estos pasos:
+
+1- Habilita la autenticación de dos factores (2FA):
+
+* Ve a la Configuración de Seguridad de tu cuenta de Google.
+* Busca la sección de "Verificación en dos pasos" o "Autenticación de dos factores".
+* Sigue los pasos para habilitar la autenticación de dos factores y completa el proceso de configuración.
+
+2- Genera una Contraseña de Aplicación:
+
+* Después de habilitar la autenticación de dos factores, busca la sección de "Contraseñas de Aplicaciones" en la configuración de seguridad de tu cuenta de Google.
+* En esta sección, puedes generar una "Contraseña de Aplicación" específica para tu aplicación de Node.js. Selecciona "Otra (nombre personalizado)" y elige un nombre descriptivo.
+* Google te proporcionará una contraseña generada que debes utilizar en lugar de tu contraseña principal en la configuración de transporte de Nodemailer.
+3-Actualiza el código en tu controlador (sendEmailController.js):
+
+Reemplaza la contraseña actual en el código del controlador con la "Contraseña de Aplicación" generada.

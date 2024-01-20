@@ -5,7 +5,7 @@ const SearchForm = ({ onSearch }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Lógica para realizar la búsqueda y llamar a la función onSearch
+        
         onSearch(searchTerm);
     };
 

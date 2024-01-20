@@ -36,7 +36,6 @@ const SubscribeForm = () => {
             });
 
             if (response.ok) {
-                // Suscripción exitosa, puedes mostrar un mensaje de éxito o redirigir a otra página
                 console.log('Suscripción exitosa');
                 setThankYouMessage('¡Gracias por suscribirte!');
                 setFormData({

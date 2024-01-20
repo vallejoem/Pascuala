@@ -35,7 +35,7 @@ export default function Card({ product, onClose }: CardProps) {
                     <div className='flex flex-col col-span-3 justify-center items-center'>
                         <h3 className="w-full text-xl font-semibold text-gray-900 md:hidden ">{product.name}</h3>
                         <img
-                            src={`http://localhost:3500/public/products/${product.images[0]}`}  // Muestra la primera imagen en la sección principal
+                            src={`http://localhost:3500/public/products/${product.images[0]}`}  
                             alt={`${product.name} - Main Image`}
                             className="mt-4 h-full md:h-full w-full md:w-3/4 object-cover object-center"
                         />

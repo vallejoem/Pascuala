@@ -4,20 +4,15 @@ const nodemailer = require('nodemailer');
 
 const sendConfirmationEmail = (client) => {
     const transporter = nodemailer.createTransport({
-        host: 'smtp-mail.outlook.com', // Servidor SMTP de Outlook
-        port: 587, // Puerto para conexiones no cifradas
-        secure: false, // true para usar el puerto seguro, false para otros puertos
+        service: 'gmail',
         auth: {
-            user: 'emilianovallejo@hotmail.com', // Tu dirección de correo electrónico de Hotmail/Outlook
-            pass: 'EMILIANO1979', // Tu contraseña de aplicación generada
+            user: 'gabyvdiaz45@gmail.com',
+            pass: 'bzmx oviy ywgl tmsw',// Modificar contraseña en 2 pasos en cuenta de google
         },
-        tls: {
-            ciphers: 'SSLv3', // Opcional, puede ser necesario para algunas configuraciones de seguridad
-        }
     });
 
     const mailOptions = {
-        from: 'emilianovallejo@hotmail.com',
+        from: 'gabyvdiaz45@gmail.com',
         to: client.email,
         subject: '¡Gracias por suscribirte!',
         html: `

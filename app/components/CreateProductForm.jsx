@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const CreateProductForm = ({ onSubmit, fetchProducts, productToEdit,hideForm }) => {
+const CreateProductForm = ({ onSubmit, fetchProducts, productToEdit, hideForm }) => {
     const [productCode, setProductCode] = useState(productToEdit ? productToEdit.code_product : '');
     const [productCategoria, setProductCategoria] = useState(productToEdit ? productToEdit.categoria : '');
     const [productName, setProductName] = useState(productToEdit ? productToEdit.name : '');
@@ -83,7 +83,7 @@ const CreateProductForm = ({ onSubmit, fetchProducts, productToEdit,hideForm }) 
     };
 
     return (
-        <form className=' flex flex-col items-center' onSubmit={handleSubmit}>
+        <form className=' flex md:w-3/4 flex-col items-center' onSubmit={handleSubmit}>
             <label className='flex w-3/4 text-left text-fuchsia-900 pt-2'>Codigo:</label>
             <input className='flex w-3/4 my-1 py-1' type="text" value={productCode} onChange={(e) => setProductCode(e.target.value)} required />
 
@@ -114,15 +114,14 @@ const CreateProductForm = ({ onSubmit, fetchProducts, productToEdit,hideForm }) 
             <input className='flex w-3/4 my-1 py-1' type="number" value={productStock} onChange={(e) => setProductStock(e.target.value)} required />
 
             <label className='flex w-3/4 text-left text-fuchsia-900 pt-2'>Imagenes:</label>
-            <input className="block m-3 text-sm text-slate-500
+            <input className="flex w-3/4 text-sm bg-fuchsia-200 p-3 text-fuchsia-800 
                                 file:mr-4 file:py-2 file:px-4
-                                file:rounded-lg file:border-0
                                 file:text-sm file:align-middle
-                                file:bg-violet-50 file:text-fuchsia-700
-                                hover:file:bg-fuchsia-100"
+                                file:bg-fuchsia-200 file:text-fuchsia-800
+                                hover:file:bg-fuchsia-300"
                 type="file" multiple onChange={handleImageChange} required />
 
-            <button className='m-3 bg-fuchsia-200 p-3 text-fuchsia-800 rounded-lg' type="submit">{productToEdit ? 'Guardar cambios' : 'Crear nuevo producto'}</button>
+            <button className='m-3 bg-fuchsia-300 p-3 text-fuchsia-800 rounded-lg' type="submit">{productToEdit ? 'Guardar cambios' : 'Crear nuevo producto'}</button>
 
         </form>
     );

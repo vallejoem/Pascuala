@@ -18,7 +18,7 @@ const ProductList: React.FC<ProductListProps> = ({ products,  fetchProducts, set
 
     const hideForm = () => {
         setSelectedProduct(null);
-        setCreateFormVisibility(true); // Cambia la visibilidad del formulario a true
+        setCreateFormVisibility(true); 
     };
 
     const handleEdit = (productId: number) => {
@@ -32,7 +32,6 @@ const ProductList: React.FC<ProductListProps> = ({ products,  fetchProducts, set
 
     const handleDelete = async (productId: number) => {
         try {
-            // Lógica para eliminar el producto por ID desde el servidor
             const response = await fetch(`http://localhost:3500/products/${productId}`, {
                 method: 'DELETE',
             });
