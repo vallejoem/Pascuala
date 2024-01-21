@@ -10,7 +10,7 @@ const borel = Borel({
 
 export default function About() {
     return (
-        <div className='mt-48 md:mt-44'>
+        <div className='mt-56 md:mt-40'>
             <div className='flex  bg-fuchsia-100'>
                 <div className="flex flex-col items-center justify-center shadow-xl">
                     <h1 className={`${borel.className} text-3xl text-fuchsia-800 py-8`}>Nuestra historia</h1>

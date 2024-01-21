@@ -30,7 +30,7 @@ export default function Productos() {
             // Parsear las imágenes para todos los productos
             const productsWithParsedImages = data.data.map((product: Product) => {
                 try {
-                    const imagesArray = JSON.parse(product.images);
+                    const imagesArray = JSON.parse(product.images) as string[];
                     return { ...product, images: imagesArray };
                 } catch (error) {
                     console.error("Error al analizar las imágenes del producto:", error);

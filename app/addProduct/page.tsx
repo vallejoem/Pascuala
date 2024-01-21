@@ -2,7 +2,7 @@
 import { Borel } from 'next/font/google'
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next';
-import ProductList from '../components/ProductList.tsx';
+import ProductList from '../components/ProductList';
 import CreateProductForm from '../components/CreateProductForm.jsx';
 import { Product } from '../types/types';
 
@@ -73,7 +73,7 @@ const AddProductPage: NextPage = () => {
     useEffect(() => {
         fetchProducts();
     }, []);
-
+    console.log('Valor de borel.className:', borel.className);
     return (
         <div className={`${borel.className} bg-fuchsia-200 flex flex-col items-center mt-60 md:mt-44`}>
             <h1 className='text-xl text-fuchsia-800'>Agregar nuevos productos</h1>
@@ -81,7 +81,7 @@ const AddProductPage: NextPage = () => {
                 Agregar nuevo producto
             </button>
             {isCreateFormVisible && (
-                <CreateProductForm onSubmit={handleCreateProduct} fetchProducts={fetchProducts} />
+                <CreateProductForm onSubmit={handleCreateProduct} fetchProducts={fetchProducts} productToEdit={undefined} hideForm={true} />
             )}
             <ProductList products={products} fetchProducts={fetchProducts} setCreateFormVisibility={setCreateFormVisibility} />
         </div>

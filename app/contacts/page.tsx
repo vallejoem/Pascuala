@@ -18,11 +18,11 @@ export default function Contacts() {
 
     const [thankYouMessage, setThankYouMessage] = useState('');
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {
@@ -45,7 +45,7 @@ export default function Contacts() {
     };
 
     return (
-        <section className={`${borel.className} mt-48 md:mt-44`}>
+        <section className={`${borel.className} mt-56 md:mt-44`}>
             <div className='flex flex-col items-center justify-center place-content-evenly bg-fuchsia-300 h-5/6 w-auto md:mx-10 md:my-10 md:rounded-xl'>
                 <div className='flex flex-col w-3/4 justify-center'>
                     <h1 className='text-center text-fuchsia-700 text-3xl my-5 py-3'>Contactanos</h1>

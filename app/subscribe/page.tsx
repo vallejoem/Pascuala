@@ -10,7 +10,7 @@ const borel = Borel({
 
 export default function subscribe() {
     return (
-        <section className={`${borel.className} mt-48 md:mt-44`}>
+        <section className={`${borel.className} mt-56 md:mt-44`}>
             <div className='flex flex-col justify-center place-content-evenly bg-fuchsia-300 h-5/6 w-auto md:mx-10 md:my-10 md:rounded-xl'>
                 <div>
                     <h1 className='text-center text-fuchsia-700 text-3xl my-5 py-3'>Suscribite a las novedades</h1>

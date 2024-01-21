@@ -6,7 +6,7 @@ export interface Product {
     description: string;
     price: number;
     stock: number;
-    images: string[];
+    images: string;
     createdAt: string;
     updatedAt: string;
     deletedAt: string;
