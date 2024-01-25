@@ -14,7 +14,7 @@ const productRouter = require('./routers/products.router');
 const sendEmailRouter = require('./routers/sendEmail.router');
 
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'https://pascuala-zcep.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 };
