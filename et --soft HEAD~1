@@ -1,0 +1,83 @@
+[33mcommit 1e8738c64b8112f84f0c86c41d3399951da34830[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Tue Oct 15 15:35:25 2024 -0300
+
+    molina
+
+[33mcommit 6f019a4b16b613bcd4c0d6af056b35db9d923202[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Tue Jan 16 12:34:24 2024 -0300
+
+    borrado archivos no necesarios y funcionando ok
+
+[33mcommit 537d81cc808d92839483bf4ceb4046679967d3d0[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Sat Jan 13 10:41:57 2024 -0300
+
+    con carousel de react-responsive-carousel funcionando
+
+[33mcommit 77e4fc1fc7e31b10c255e98d3c47bdc0c576f4f8[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Sat Jan 13 10:18:01 2024 -0300
+
+    con carousel de flowbite sin funcionar
+
+[33mcommit 2482e94ff28b11534f60b2d38949be21049eb847[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Fri Jan 12 11:32:10 2024 -0300
+
+    configuracion final sin actualizar flowbite
+
+[33mcommit 9d74326025a1963430c58879278c9d507c454664[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Fri Dec 29 09:01:35 2023 -0300
+
+    agregue Crud de clients para seccion subcribe funciona en postman
+
+[33mcommit 066329d13641ceae8fc6df4e53f4c61aecd3dba6[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Sun Dec 24 10:13:44 2023 -0300
+
+    CRUD de add Products funcionando ok
+
+[33mcommit 0b3247a4f9bae7bb771a80b34adad20d09d1599b[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Thu Dec 21 09:57:50 2023 -0300
+
+    integracion front back en addProduct funcionando agregar productos y mostrar la lista
+
+[33mcommit 20ff82daf787699175549d8f17c4d4892f1d272a[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Tue Dec 19 13:32:05 2023 -0300
+
+    proyecto funcionando integrado back y front
+
+[33mcommit 1a4b7c2d0c6fbfa43511e012faa8949764a7c1b9[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Tue Dec 12 13:40:57 2023 -0300
+
+    pascuala 12-12
+
+[33mcommit 14532767497018ed01c4d78425fe7402f760b725[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Tue Oct 31 11:07:50 2023 -0300
+
+    api pascuala 31-10
+
+[33mcommit ca7f6aa7aac4cc538be2b98c7b9c373a0b2d1933[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Sat Sep 23 15:52:00 2023 -0300
+
+    se agregaron varias secciones y se corrigio el nav
+
+[33mcommit f85d576519b7853022133e9d77f9008e17176d6a[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Sun Sep 17 14:50:46 2023 -0300
+
+    proyecto pascuala
+
+[33mcommit bb56f751357cc531a41e63938571aebf38c30964[m
+Author: vallejoem <emiliano.vallejo@gmail.com>
+Date:   Mon Sep 11 09:24:43 2023 -0300
+
+    Initial commit from Create Next App
