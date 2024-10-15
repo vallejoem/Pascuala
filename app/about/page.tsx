@@ -1,9 +1,9 @@
 'use client'
 import Image from 'next/image'
-import { Borel } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 
 
-const borel = Borel({
+const roboto = Roboto({
     subsets: ['latin'],
     weight: '400'
 })
@@ -11,10 +11,10 @@ const borel = Borel({
 export default function About() {
     return (
         <div className='mt-48 md:mt-44'>
-            <div className='flex  bg-fuchsia-100'>
+            <div className='flex  bg-slate-100'>
                 <div className="flex flex-col items-center justify-center shadow-xl">
-                    <h1 className={`${borel.className} text-3xl text-fuchsia-800 py-8`}>Nuestra historia</h1>
-                    <div className='relative md:w-4/5 bg-fuchsia-300 mb-10 rounded-lg h-full'>
+                    <h1 className={`${roboto.className} text-3xl text-slate-800 py-8`}>Nuestra historia</h1>
+                    <div className='relative md:w-4/5 bg-slate-300 mb-10 rounded-lg h-full'>
                         <Image
                             className='float-none md:float-right p-5'
                             src="/images/american.jpeg" 
@@ -24,10 +24,10 @@ export default function About() {
                             objectFit="cover"
                         />
                         <div>
-                            <h1 className={`${borel.className} text-3xl text-fuchsia-800 px-5 pt-8 pb-2`}> Pascuala pequeñas costuras</h1>
-                            <h2 className={`${borel.className} text-fuchsia-800 px-5 py-1`}>Mar del Plata, Buenos Aires</h2>
-                            <p className={`${borel.className} text-fuchsia-800 px-5 py-1`}>Por Gabriela Viviana Díaz</p>
-                            <p className={`${borel.className} text-lg text-fuchsia-800 px-5 pt-1 pb-5`}>Gabriela confecciona ropa para muñecas
+                            <h1 className={`${roboto.className} text-3xl text-slate-800 px-5 pt-8 pb-2`}> Pascuala pequeñas costuras</h1>
+                            <h2 className={`${roboto.className} text-slate-800 px-5 py-1`}>Mar del Plata, Buenos Aires</h2>
+                            <p className={`${roboto.className} text-slate-800 px-5 py-1`}>Por Gabriela Viviana Díaz</p>
+                            <p className={`${roboto.className} text-lg text-slate-800 px-5 pt-1 pb-5`}>Gabriela confecciona ropa para muñecas
                                 vestidos, carteras, sombreros, salidas de
                                 baño, camisas y pantalones. Trabaja con
                                 telas de distintas texturas y colores de

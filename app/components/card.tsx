@@ -28,7 +28,7 @@ export default function Card({ product, onClose }: CardProps) {
                                 key={index}
                                 src={`http://localhost:3500/public/products/${image}`}
                                 alt={`${product.name} - Image ${index + 1}`}
-                                className="mt-4 h-52 w-full w-5/6 object-cover object-center"
+                                className="mt-4 h-52 w-full w-5/6 object-contain object-center"
                             />
                         ))}
                     </div>
@@ -37,7 +37,7 @@ export default function Card({ product, onClose }: CardProps) {
                         <img
                             src={`http://localhost:3500/public/products/${product.images[0]}`}  // Muestra la primera imagen en la sección principal
                             alt={`${product.name} - Main Image`}
-                            className="mt-4 h-full md:h-full w-full md:w-3/4 object-cover object-center"
+                            className="mt-4 h-full md:h-full w-full md:w-3/4 object-contain object-center"
                         />
                     </div>
                     <div className='md:mt-5 flex flex-col col-span-2'>

@@ -1,15 +1,15 @@
 'use client'
-import { Norican, Borel } from 'next/font/google';
+import { Roboto, Raleway } from 'next/font/google';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 
-const norican = Norican({
+const roboto = Roboto({
   subsets: ['latin'],
   weight: '400'
 })
 
-const borel = Borel({
+const raleway = Raleway({
   subsets: ['latin'],
   weight: '400'
 })
@@ -22,7 +22,7 @@ export default function Home() {
     <div className='bg-gray-100 mt-48 md:mt-40'>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
         <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
-          <h2 className={`${borel.className} pt-3 text-3xl font-bold text-fuchsia-950`}>Colecciones Primavera-Verano</h2>
+          <h2 className={`${roboto.className} pt-3 text-3xl font-bold text-fuchsia-950`}>Nuevos Ingresos</h2>
           <div className="h-full">
             <Carousel
               showArrows={true}
@@ -32,13 +32,13 @@ export default function Home() {
               infiniteLoop={true}
             >
               <div>
-                <img className='object-cover w-full h-full' src="http://localhost:3500/public/carousel/slide1.png" alt="..." />
+                <img className='object-cover w-full h-full' src="http://localhost:3500/public/carousel/slide1.jpg" alt="honda" />
               </div>
               <div>
-                <img className='object-cover w-full h-full' src="http://localhost:3500/public/carousel/slide2.jpg" alt="..." />
+                <img className='object-cover w-full h-full' src="http://localhost:3500/public/carousel/slide2.jpeg" alt="mercedes" />
               </div>
               <div>
-                <img className='object-cover w-full h-full' src="http://localhost:3500/public/carousel/slide3.jpg" alt="..." />
+                <img className='object-cover w-full h-full' src="http://localhost:3500/public/carousel/slide3.jpeg" alt="toyota" />
               </div>
             </Carousel>
           </div>

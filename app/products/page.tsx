@@ -3,11 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { Product } from '../types/types';
 import Card from '../components/card';
-import { Borel } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 
 
 
-const borel = Borel({
+const roboto = Roboto({
     subsets: ['latin'],
     weight: '400'
 })
@@ -68,17 +68,17 @@ export default function Productos() {
     return (
         <div className="bg-white mt-48 md:mt-28">
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h2 className={`${borel.className} pt-3 text-3xl md:ms-3 font-bold tracking-tight text-fuchsia-950`}>Productos</h2>
+                <h2 className={`${roboto.className} pt-3 text-3xl md:ms-3 font-bold tracking-tight text-fuchsia-950`}>Productos</h2>
                 <div className='flex justify-center'>
-                    <a className={`${borel.className} m-1 md:pt-3 text-lg md:text-xl md:m-3 font-bold tracking-tight text-fuchsia-950 hover:text-fuchsia-700`}
+                    <a className={`${roboto.className} m-1 md:pt-3 text-lg md:text-xl md:m-3 font-bold tracking-tight text-fuchsia-950 hover:text-fuchsia-700`}
                         onClick={() => handleCategoriaClick('muñecas')}>
-                        Muñecas
+                        Autos
                     </a>
-                    <a className={`${borel.className} m-1 md:pt-3 text-lg md:text-xl md:m-3 font-bold tracking-tight text-fuchsia-950 hover:text-fuchsia-700`}
+                    <a className={`${roboto.className} m-1 md:pt-3 text-lg md:text-xl md:m-3 font-bold tracking-tight text-fuchsia-950 hover:text-fuchsia-700`}
                         onClick={() => handleCategoriaClick('indumentaria')}>
-                        Indumentaria
+                        Pick Ups
                     </a>
-                    <a className={`${borel.className} m-1 md:pt-3 text-lg md:text-xl md:m-3 font-bold tracking-tight text-fuchsia-950 hover:text-fuchsia-700`}
+                    <a className={`${roboto.className} m-1 md:pt-3 text-lg md:text-xl md:m-3 font-bold tracking-tight text-fuchsia-950 hover:text-fuchsia-700`}
                         onClick={() => handleCategoriaClick('accesorios')}>
                         Accesorios
                     </a>

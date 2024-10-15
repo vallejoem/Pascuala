@@ -1,15 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Borel&family=Comic+Neue&family=Grand+Hotel&family=Itim&family=Norican&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 
 
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --font-logo: 'Norican', sans-serif;
-  --font-general: 'Borel', sans-serif;
+  --font-logo: 'Roboto', sans-serif;
+  --font-general: 'Raleway', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,5 +22,5 @@
 }
 
 body {
-  background-color: #F5D0FE ;
+  background-color: rgb(203, 213, 225) ;
 }

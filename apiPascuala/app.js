@@ -5,12 +5,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const port = 3500;
 
-const userRouter = require('./routers/users.router');
+//const userRouter = require('./routers/users.router');
 //Routers, rutas post-get-delete-put-patch-header-options
 //app.METHOD(path,handler);
 const clientRouter = require('./routers/clients.router');
 const productRouter = require('./routers/products.router');
-const loginRouter = require('./routers/login.router');
+//const loginRouter = require('./routers/login.router');
 const corsOptions = {
     origin: 'http://localhost:3000',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -45,10 +45,10 @@ app.get('/', (req, res) => {
     //end finaliza el proceso de respuesta
 });*/
 app.use(cors(corsOptions));
-app.use('/users',userRouter); 
+//app.use('/users',userRouter); 
 app.use('/clients',clientRouter);
 app.use('/products',productRouter);
-app.use('/login',loginRouter);
+//app.use('/login',loginRouter);
 
 
 app.use(errorHandler);
