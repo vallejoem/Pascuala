@@ -11,8 +11,13 @@ type CardProps = {
 
 
 export default function Card({ product, onClose }: CardProps) {
-    
+    // Estado para manejar la imagen seleccionada
+    const [selectedImage, setSelectedImage] = useState<string>(product.images[0]);
 
+    // Función que actualiza la imagen principal cuando se hace clic en una miniatura
+    const handleImageClick = (image: string) => {
+        setSelectedImage(image);
+    }
     return (
         <div className="z-30 bg-white fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center ">
             <div className="p-8 max-w-md md:max-w-none bg-gray-100 rounded-lg">
@@ -28,14 +33,15 @@ export default function Card({ product, onClose }: CardProps) {
                                 key={index}
                                 src={`http://localhost:3500/public/products/${image}`}
                                 alt={`${product.name} - Image ${index + 1}`}
-                                className="mt-4 h-52 w-full w-5/6 object-contain object-center"
+                                className="mt-4 h-52 w-full w-5/6 object-contain object-center cursor-pointer"
+                                onClick={() => handleImageClick(image)}  // Al hacer clic se actualiza la imagen principal
                             />
                         ))}
                     </div>
                     <div className='flex flex-col col-span-3 justify-center items-center'>
                         <h3 className="w-full text-xl font-semibold text-gray-900 md:hidden ">{product.name}</h3>
                         <img
-                            src={`http://localhost:3500/public/products/${product.images[0]}`}  // Muestra la primera imagen en la sección principal
+                            src={`http://localhost:3500/public/products/${selectedImage}`}  // Muestra la primera imagen en la sección principal
                             alt={`${product.name} - Main Image`}
                             className="mt-4 h-full md:h-full w-full md:w-3/4 object-contain object-center"
                         />
