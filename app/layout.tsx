@@ -39,9 +39,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.png" />
+        {/*<link rel="icon" href="/favicon.png" />*/}
         {/* Si el favicon está en formato PNG, podés usar esta opción */}
-        {/* <link rel="icon" type="image/png" href="/favicon.png" /> */}
+         <link rel="icon" type="image/png" href="/favicon.png" /> 
         <title>Molina</title>
       </head>
       <body className='relative'>
@@ -59,12 +59,6 @@ export default function RootLayout({
                 <span className={roboto.className + ' pl-3 text-teal-200'}>AGENCIA DE USADOS</span>
 
               </Link>
-            </div>
-            <div className='flex items-center py-3 justify-center grow '>
-              <form className=" flex items-center md:w-full search-form">
-                <input className='w-full rounded-l-lg p-1' type="text" placeholder=" Buscar" />
-                <button className='bg-teal-200  p-1 rounded-r-lg hover:bg-teal-300' type="submit">  Buscar</button>
-              </form>
             </div>
           </nav>
           <nav className='h-[60px] flex items-center justify-start md:justify-center bg-teal-600 rounded-b-3xl shadow-teal-700/50 nav2 '>
