@@ -44,14 +44,14 @@ export default function RootLayout({
          <link rel="icon" type="image/png" href="/favicon.png" /> 
         <title>Molina</title>
       </head>
-      <body className='relative'>
+      <body className='relative bg-white'>
         <div className='fixed top-0 right-0 left-0 z-10'>
-          <nav className='grid grid-cols-1 md:grid-cols-3 md:h-[100px] bg-teal-700 border-b border-black nav1'>
-            <div className='col-span-2 py-3 md:col-auto flex pt-2 items-center justify-center md:pt-0'>
+          <nav className='grid grid-cols-2 md:grid-cols-3 md:h-[160px] bg-teal-700 items-center'>
+            <div className='col-span-1 flex items-center justify-center'>
               <Link className='w-auto flex items-center ' href='/'>
                 <Image
                   src="/images/logomolina.png"
-                  alt="Nombre de la imagen"
+                  alt="Logo"
                   width={80}
                   height={60}
                   objectFit="cover"
@@ -60,22 +60,19 @@ export default function RootLayout({
 
               </Link>
             </div>
-            
-          </nav>
-          <nav className='h-[60px] flex items-center justify-start md:justify-center bg-teal-600 rounded-b-3xl shadow-teal-700/50 nav2 '>
-            <div className='flex ps-4 md:hidden'>
+            {/* Botón para el menú en pantallas pequeñas */}
+            <div className='flex justify-end pr-4 md:hidden'>
               <button
                 id='bars'
-                className='flex px-3 py-2 border rounded border-teal-200 text-teal-200 hover:text-teal-300'
+                className='flex px-3 py-3 text-teal-200 hover:text-teal-300'
                 onClick={toggleMenu} // Llamar a la función cuando se hace clic
               >
-                <FontAwesomeIcon icon={faBars} />
-                <title>Menu</title>
+                <FontAwesomeIcon icon={faBars} size='2x'/>
               </button>
               {isMenuVisible && (
                 <div
                   id='menu'
-                  className='absolute left-0 mt-11 z-50 bg-teal-600 border border-teal-200 rounded-md shadow-md'
+                  className='absolute right-0 mt-16 z-50 bg-teal-700 shadow-md'
                 >
                   <div>
                     <a className={`${raleway.className} block px-3 pt-4 pb-1 text-xl text-teal-200 hover:bg-teal-300 hover:text-teal-700`} href='/'>
@@ -87,7 +84,7 @@ export default function RootLayout({
                       className={`${raleway.className} block px-3 py-2 text-xl text-teal-200 hover:bg-teal-300 hover:text-teal-700`}
                       href='/about'
                     >
-                      Acerca de
+                      Nosotros
                     </a>
                   </div>
                   <div>
@@ -101,28 +98,23 @@ export default function RootLayout({
                 </div>
               )}
             </div>
-            <div className='hidden h-full md:flex bg-teal-600 h-full items-center justify-center'>
-              <div className='flex h-full items-center ' >
-                <a className={`${raleway.className} flex h-full px-3 pt-4 pb-1 text-xl text-teal-200 hover:bg-teal-300 hover:text-teal-700`} href='/'>
-                  Home
-                </a>
-              </div>
-              <div className='flex h-full items-center ' >
-                <a
-                  className={`${raleway.className} flex h-full px-3 py-4 text-xl text-teal-200 hover:bg-teal-300 hover:text-teal-700`}
-                  href='/about'
-                >
-                  Acerca de
-                </a>
-              </div>
-              <div className='flex h-full items-center ' >
-                <a
-                  className={`${raleway.className} flex h-full px-3 py-4 text-xl text-teal-200 hover:bg-teal-300 hover:text-teal-700`}
-                  href='/products'
-                >
-                  Autos
-                </a>
-              </div>
+            {/* Menú en pantallas grandes en la tercera columna */}
+            <div className='hidden md:flex md:col-span-2 md:col-start-3 bg-teal-700 h-full items-end justify-center'>
+              <a className={`${raleway.className} px-3 pb-4 text-xl text-teal-200 hover:text-teal-400`} href='/'>
+                Home
+              </a>
+              <a
+                className={`${raleway.className} px-3 pb-4 text-xl text-teal-200 hover:text-teal-400`}
+                href='/about'
+              >
+                Nosotros
+              </a>
+              <a
+                className={`${raleway.className} px-3 pb-4 text-xl text-teal-200 hover:text-teal-400`}
+                href='/products'
+              >
+                Autos
+              </a>
             </div>
           </nav>
         </div>
@@ -133,7 +125,7 @@ export default function RootLayout({
           </a>
         </div>
         <section className={raleway.className + ' flex content-center '} >
-          <div className="grid h-full md:grid-cols-3 md:grid-rows-1 bg-teal-600 flex p-3 h-64 rounded-t-3xl content-center w-full">
+          <div className="grid h-full md:grid-cols-3 md:grid-rows-1 bg-teal-600 flex p-3 h-64 content-center w-full">
             <div className="flex flex-col p-5">
               <ul>
                 <li className="list-group-item">
@@ -169,7 +161,7 @@ export default function RootLayout({
         </section>
         <footer>
           <div className="bg-teal-700 p-3">
-            <p>&copy Grupo C4</p>
+            <p>© Emiliano Vallejo</p>
           </div>
         </footer>
       </body >
