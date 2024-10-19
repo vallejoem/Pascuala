@@ -60,6 +60,7 @@ export default function RootLayout({
 
               </Link>
             </div>
+            
           </nav>
           <nav className='h-[60px] flex items-center justify-start md:justify-center bg-teal-600 rounded-b-3xl shadow-teal-700/50 nav2 '>
             <div className='flex ps-4 md:hidden'>
