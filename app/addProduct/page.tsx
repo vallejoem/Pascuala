@@ -1,13 +1,13 @@
 'use client'
-import { Borel } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next';
-import ProductList from '../components/ProductList.tsx';
+import ProductList from '../components/ProductList';
 import CreateProductForm from '../components/CreateProductForm.jsx';
 import { Product } from '../types/types';
 
 
-const borel = Borel({
+const roboto = Roboto({
     subsets: ['latin'],
     weight: '400'
 })
@@ -75,7 +75,7 @@ const AddProductPage: NextPage = () => {
     }, []);
 
     return (
-        <div className={`${borel.className} bg-fuchsia-200 flex flex-col items-center mt-60 md:mt-44`}>
+        <div className={`${roboto.className} bg-fuchsia-200 flex flex-col items-center mt-60 md:mt-44`}>
             <h1 className='text-xl text-fuchsia-800'>Agregar nuevos productos</h1>
             <button className='m-3 align-middle text-center bg-fuchsia-300 p-3 text-fuchsia-800 border border-fuchsia-950 rounded-lg' onClick={() => setCreateFormVisibility(true)}>
                 Agregar nuevo producto
