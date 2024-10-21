@@ -10,34 +10,24 @@ const roboto = Roboto({
 
 export default function About() {
     return (
-        <div className='mt-48 md:mt-44'>
+        <div className='mt-20 md:mt-44'>
             <div className='flex  bg-slate-100'>
                 <div className="flex flex-col items-center justify-center shadow-xl">
                     <h1 className={`${roboto.className} text-3xl text-slate-800 py-8`}>Nuestra historia</h1>
                     <div className='relative md:w-4/5 bg-slate-300 mb-10 rounded-lg h-full'>
                         <Image
                             className='float-none md:float-right p-5'
-                            src="/images/american.jpeg" 
-                            alt="american-girl"
+                            src="/images/about.jpg" 
+                            alt="molina"
                             width={400}
                             height={240}
                             objectFit="cover"
                         />
                         <div>
-                            <h1 className={`${roboto.className} text-3xl text-slate-800 px-5 pt-8 pb-2`}> Pascuala pequeñas costuras</h1>
+                            <h1 className={`${roboto.className} text-3xl text-slate-800 px-5 pt-8 pb-2`}> Molina Usados seleccionados</h1>
                             <h2 className={`${roboto.className} text-slate-800 px-5 py-1`}>Mar del Plata, Buenos Aires</h2>
-                            <p className={`${roboto.className} text-slate-800 px-5 py-1`}>Por Gabriela Viviana Díaz</p>
-                            <p className={`${roboto.className} text-lg text-slate-800 px-5 pt-1 pb-5`}>Gabriela confecciona ropa para muñecas
-                                vestidos, carteras, sombreros, salidas de
-                                baño, camisas y pantalones. Trabaja con
-                                telas de distintas texturas y colores de
-                                excelente calidad además de simpáticos
-                                accesorios. Ella misma diseña sus propios
-                                moldes, corta, cose y arma las prendas a
-                                mano. Cada día sus productos tienen más
-                                éxito, por eso participó en ferias
-                                navideñas y espera pronto poder abrir su
-                                propio local.
+                            <p className={`${roboto.className} text-slate-800 px-5 py-1`}>Por Molina Diego</p>
+                            <p className={`${roboto.className} text-lg text-slate-800 px-5 pt-1 pb-5`}>Diego, Gastón y Maxi tienen una agencia de autos usados en Mar del Plata, ubicada en la calle Primera Junta 2000. Se especializan en la venta de vehículos en excelente estado, con revisiones mecánicas completas y garantía incluida. Ofrecen distintas opciones de financiación para facilitar la compra, adaptándose a las necesidades de cada cliente. Además, brindan un servicio integral de asesoramiento en gestoría, acompañando a los compradores en todos los trámites necesarios. Gracias a su compromiso y confianza, la agencia se ha ganado una excelente reputación en la ciudad y sigue creciendo cada día.
                             </p>
                         </div>
                     </div>

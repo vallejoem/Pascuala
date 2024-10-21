@@ -84,10 +84,10 @@ const CreateProductForm = ({ onSubmit, fetchProducts, productToEdit, hideForm })
 
     return (
         <form className=' flex flex-col items-center' onSubmit={handleSubmit}>
-            <label className='flex w-3/4 text-left text-fuchsia-900 pt-2'>Codigo:</label>
+            <label className='flex w-3/4 text-left text-teal-900 pt-2'>Codigo:</label>
             <input className='flex w-3/4 my-1 py-1' type="text" value={productCode} onChange={(e) => setProductCode(e.target.value)} required />
 
-            <label className='flex w-3/4 text-left text-fuchsia-900 pt-2'>Categoria:</label>
+            <label className='flex w-3/4 text-left text-teal-900 pt-2'>Categoria:</label>
             <select
                 className='flex w-3/4 my-1 py-1'
                 value={productCategoria}
@@ -101,28 +101,28 @@ const CreateProductForm = ({ onSubmit, fetchProducts, productToEdit, hideForm })
                 ))}
             </select>
 
-            <label className='flex w-3/4 text-left text-fuchsia-900 pt-2'>Nombre:</label>
+            <label className='flex w-3/4 text-left text-teal-900 pt-2'>Nombre:</label>
             <input className='flex w-3/4 my-1 py-1' type="text" value={productName} onChange={(e) => setProductName(e.target.value)} required />
 
-            <label className='flex w-3/4 text-left text-fuchsia-900 pt-2'>Descripcion:</label>
+            <label className='flex w-3/4 text-left text-teal-900 pt-2'>Descripcion:</label>
             <textarea className='flex w-3/4 my-1 py-1' value={productDescription} onChange={(e) => setProductDescription(e.target.value)} required />
 
-            <label className='flex w-3/4 text-left text-fuchsia-900 pt-2'>Precio:</label>
+            <label className='flex w-3/4 text-left text-teal-900 pt-2'>Precio:</label>
             <input className='flex w-3/4 my-1 py-1' type="number" value={productPrice} onChange={(e) => setProductPrice(e.target.value)} required />
 
-            <label className='flex w-3/4 text-left text-fuchsia-900 pt-2'>Stock:</label>
+            <label className='flex w-3/4 text-left text-teal-900 pt-2'>Stock:</label>
             <input className='flex w-3/4 my-1 py-1' type="number" value={productStock} onChange={(e) => setProductStock(e.target.value)} required />
 
-            <label className='flex w-3/4 text-left text-fuchsia-900 pt-2'>Imagenes:</label>
+            <label className='flex w-3/4 text-left text-teal-900 pt-2'>Imagenes:</label>
             <input className="block m-3 text-sm text-slate-500
                                 file:mr-4 file:py-2 file:px-4
                                 file:rounded-lg file:border-0
                                 file:text-sm file:align-middle
-                                file:bg-violet-50 file:text-fuchsia-700
-                                hover:file:bg-fuchsia-100"
+                                file:bg-violet-50 file:text-teal-700
+                                hover:file:bg-teal-100"
                 type="file" multiple onChange={handleImageChange} required />
 
-            <button className='m-3 bg-fuchsia-200 p-3 text-fuchsia-800 rounded-lg' type="submit">{productToEdit ? 'Guardar cambios' : 'Crear nuevo producto'}</button>
+            <button className='m-3 bg-teal-300 p-3 text-teal-800 rounded-lg' type="submit">{productToEdit ? 'Guardar cambios' : 'Crear nuevo producto'}</button>
 
         </form>
     );
