@@ -81,7 +81,7 @@ const AddProductPage: NextPage = () => {
                 Agregar nuevo producto
             </button>
             {isCreateFormVisible && (
-                <CreateProductForm onSubmit={handleCreateProduct} fetchProducts={fetchProducts} />
+                <CreateProductForm onSubmit={handleCreateProduct} fetchProducts={fetchProducts} productToEdit={null}  hideForm={() => setCreateFormVisibility(false)} />
             )}
             <ProductList products={products} fetchProducts={fetchProducts} setCreateFormVisibility={setCreateFormVisibility} />
         </div>

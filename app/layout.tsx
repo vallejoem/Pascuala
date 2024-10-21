@@ -41,7 +41,7 @@ export default function RootLayout({
       <head>
         {/*<link rel="icon" href="/favicon.png" />*/}
         {/* Si el favicon está en formato PNG, podés usar esta opción */}
-         <link rel="icon" type="image/png" href="/favicon.png" /> 
+        <link rel="icon" type="image/png" href="/favicon.png" /> 
         <title>Molina</title>
       </head>
       <body className='relative bg-white'>

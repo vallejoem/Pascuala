@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const CreateProductForm = ({ onSubmit, fetchProducts, productToEdit,hideForm }) => {
+const CreateProductForm = ({ onSubmit, fetchProducts, productToEdit, hideForm }) => {
     const [productCode, setProductCode] = useState(productToEdit ? productToEdit.code_product : '');
     const [productCategoria, setProductCategoria] = useState(productToEdit ? productToEdit.categoria : '');
     const [productName, setProductName] = useState(productToEdit ? productToEdit.name : '');
@@ -30,7 +30,7 @@ const CreateProductForm = ({ onSubmit, fetchProducts, productToEdit,hideForm }) 
         setProductImages([]);
     };
 
-    const categorias = ['muñecas', 'indumentaria', 'accesorios'];
+    const categorias = ['autos', 'pickup', 'accesorios'];
 
     const handleImageChange = (e) => {
         const files = Array.from(e.target.files);
