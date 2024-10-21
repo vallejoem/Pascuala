@@ -142,16 +142,16 @@ export default function RootLayout({
             <div className="flex flex-col md:col-span-2 items-center ">
               <h2 className="text-teal-200 text-3xl m-3 py-3">Seguinos en nuestras redes !!!</h2>
               <div className="flex pb-3">
-                <a className="link-redes" href="https://www.facebook.com/pascuala.pequenascosturas" target="_blank">
+                <a className="link-redes" href="https://www.facebook.com" target="_blank">
                   <FontAwesomeIcon className='text-teal-200 p-2' size='3x' icon={faFacebook} />
                 </a>
-                <a className="link-redes" href="https://www.instagram.com/pascuala2012/" target="_blank">
+                <a className="link-redes" href="https://www.instagram.com" target="_blank">
                   <FontAwesomeIcon className='text-teal-200 p-2' size='3x' icon={faSquareInstagram} />
                 </a>
                 <a className="link-redes" href="mailto:" target="_blank">
                   <FontAwesomeIcon className='text-teal-200 p-2' size='3x' icon={faAt} />
                 </a>
-                <a className="link-redes" href="https://api.whatsapp.com/send?phone=5492233023017" target="_blank">
+                <a className="link-redes" href="https://api.whatsapp.com/send?phone=5492235450898" target="_blank">
                   <FontAwesomeIcon className='text-teal-200 p-2' size='3x' icon={faSquareWhatsapp} />
                 </a>
               </div>
