@@ -51,12 +51,12 @@ const ProductList: React.FC<ProductListProps> = ({ products,  fetchProducts, set
         };
     }
     return (
-        <div className='bg-fuchsia-200 w-full md:w-3/4'>
-            <h2 className='p-3 bg-fuchsia-400 w-full '>Lista de Productos</h2>
+        <div className='bg-teal-200 w-full md:w-3/4'>
+            <h2 className='p-3 bg-teal-400 w-full '>Lista de Productos</h2>
             <div className="overflow-x-auto">
             <table className='w-full table-auto border-collapse border border-slate-500 mb-5'>
-                <thead className='bg-fuchsia-300 '>
-                    <tr className='bg-fuchsia-300 align-middle text-center'>
+                <thead className='bg-teal-300 '>
+                    <tr className='bg-teal-300 align-middle text-center'>
                         <th className='py-2 align-middle text-center'>Categoria</th>
                         <th className='py-2 align-middle text-center'>Nombre</th>
                         <th className='py-2 align-middle text-center'>Descripción</th>
@@ -65,7 +65,7 @@ const ProductList: React.FC<ProductListProps> = ({ products,  fetchProducts, set
                         <th className='py-2 align-middle text-center'></th>
                     </tr>
                 </thead>
-                <tbody className='bg-fuchsia-400 align-middle text-center'>
+                <tbody className='bg-teal-400 align-middle text-center'>
                     {products.map(product => (
                         <tr key={product.id}>
                             <td className='py-2 align-middle text-center'>{product.categoria}</td>

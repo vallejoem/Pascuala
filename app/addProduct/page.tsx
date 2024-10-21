@@ -75,9 +75,9 @@ const AddProductPage: NextPage = () => {
     }, []);
 
     return (
-        <div className={`${roboto.className} bg-fuchsia-200 flex flex-col items-center mt-60 md:mt-44`}>
-            <h1 className='text-xl text-fuchsia-800'>Agregar nuevos productos</h1>
-            <button className='m-3 align-middle text-center bg-fuchsia-300 p-3 text-fuchsia-800 border border-fuchsia-950 rounded-lg' onClick={() => setCreateFormVisibility(true)}>
+        <div className={`${roboto.className} bg-teal-200 flex flex-col items-center mt-60 md:mt-44`}>
+            <h1 className='text-xl text-teal-800'>Agregar nuevos productos</h1>
+            <button className='m-3 align-middle text-center bg-teal-300 p-3 text-teal-800 border border-teal-950 rounded-lg' onClick={() => setCreateFormVisibility(true)}>
                 Agregar nuevo producto
             </button>
             {isCreateFormVisible && (
