@@ -10,6 +10,8 @@ const port = 3500;
 //app.METHOD(path,handler);
 const clientRouter = require('./routers/clients.router');
 const productRouter = require('./routers/products.router');
+const contactRouter = require('./routers/contact.router');
+
 //const loginRouter = require('./routers/login.router');
 const corsOptions = {
     origin: 'http://localhost:3000',
@@ -26,7 +28,6 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 const errorHandler=(error,req,resp,next)=>{
     const status = error.status || 400;
     resp.status(status).json({ error: true, message: error.message });
-
 }
 /**ERROR PATH */
 const invalidPathHandler = (req,resp,next) =>{
@@ -48,6 +49,7 @@ app.use(cors(corsOptions));
 //app.use('/users',userRouter); 
 app.use('/clients',clientRouter);
 app.use('/products',productRouter);
+app.use('/contact', contactRouter);
 //app.use('/login',loginRouter);
 
 
